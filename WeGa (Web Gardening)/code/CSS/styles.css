@@ -1,0 +1,24 @@
+.logo {
+    background: left / cover url('http://www.uaic.ro/wp-content/uploads/2019/12/Fitomorfa_zoomorfe_topiare_2019.jpg');
+    display: flex;
+    height: 120px;
+    align-items: center;
+    justify-content: center;
+    font: bold calc(1em + 2 * (100vw - 120px) / 100) 'Dancing Script', fantasy;
+    color: White;
+    text-shadow: #000 2px 2px 0.2rem;
+}
+footer {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    background-color: #45a1ff;
+    color: #fff;
+}
+.header {
+    background-color: White;
+    padding: 20px;
+  }
+body{
+    background-color:powderblue;
+}
