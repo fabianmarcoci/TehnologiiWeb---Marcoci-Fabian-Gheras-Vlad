@@ -1,42 +1,114 @@
 <!DOCTYPE html>
-<html lang = "en">
+<html lang="en">
 <head>
     <title>Web Gardening</title>
-    <link rel="icon" type="image/png" id="logo-icon" href="../../static/img//favicon.png" sizes="16x16">
+    <link rel="icon" type="image/png" id="logo-icon" href="../../static/img/favicon.png" sizes="16x16">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA Compatible" content="IE=edge">
-    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../static/CSS/WeGa.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Arizonia&family=Oswald:wght@300&family=Playfair+Display:ital@1&family=Raleway:wght@500;800&display=swap" rel="stylesheet">
+
 </head>
 <body>
-<header>
-    <div class="first-line">
-        <div class="logo">
-            <a href="WeGa.html" id="WeGa"><span class="first-letter">W</span>e<span class="third-letter">G</span>a</a>
-            <img src="../../static/img//favicon.png" class="plant-logo"></img>
-        </div>
-        <div class="header-buttons">
-            <a href="http://localhost:63342/WeGa%20(Web%20Gardening)/code/HTML/Login.html?_ijt=qea7catuet8aeqegfanc4n4972&_ij_reload=RELOAD_ON_SAVE" id="login-button">Login</a>
-            <a href="http://localhost:63342/WeGa%20(Web%20Gardening)/code/HTML/REGISTER.html?_ijt=qea7catuet8aeqegfanc4n4972&_ij_reload=RELOAD_ON_SAVE" id="register-button">Register</a>
-        </div>
-    </div>
-    <h1 class="header-title">
-        <span class="title"><span class="first-word"><span class="first-letter">G</span>rădina </span> Botanică</span>
-        <span class="city">Iași</span>
-    </h1>
-    <div class="blurred-image">
-        <img src = 'https://images.unsplash.com/photo-1496661415325-ef852f9e8e7c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1227&q=80' alt="Photo of pink flowers">
-    </div>
-</header>
-<footer>
-    <p>© 2023 WeGa.All rights reserved.</p>
-</footer>
-<main>
 
-</main>
+
+
+<form>
+    <input type="file" multiple />
+    <button type="button">OK</button>
+</form>
+
+<script type="text/javascript">
+    document.querySelector('button').onclick = function sendIdentification() {
+        const files = [...document.querySelector('input[type=file]').files];
+        const promises = files.map((file) => {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    const res = event.target.result;
+                    console.log(res);
+                    resolve(res);
+                }
+                reader.readAsDataURL(file)
+            })
+        })
+
+        Promise.all(promises).then((base64files) => {
+            console.log(base64files)
+
+            const data = {
+                api_key: "5kJa7uuci9vqmZddpgQRvfV30qoxFY47gL4mRyvo9Kh4lgH99p",
+                images: base64files,
+                modifiers: ["crops_fast", "similar_images"],
+                plant_language: "en",
+                plant_details: ["common_names",
+                    "url",
+                    "name_authority",
+                    "wiki_description",
+                    "taxonomy",
+                    "synonyms"],
+            };
+
+            fetch('https://api.plant.id/v2/identify', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Success:', data);
+                        data.suggestions.forEach((item, i) => {
+                            if (i < 3) {
+                                const img = document.getElementById(`api-img-${i}`);
+                                const p = document.getElementById(`api-desc-${i}`);
+
+                                img.src = item.image_url;  // make sure to use the correct property name
+                                img.alt = item.plant_details.common_names;  // and here too
+                                p.textContent = item.plant_details.common_names;  // and here too
+                            }
+                        });
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+        })
+
+    };
+</script>
+
+
+<header>
+    <!-- Rest of the HTML -->
+
+    <img class="myImage" src="../../static/img/gradina.jpg" alt="">
+
+    <!-- image and information container -->
+    <div class="image-container">
+        <div class="image-card">
+            <img id="api-img-0" src="" alt="">
+            <p id="api-desc-0"></p>
+        </div>
+        <div class="image-card">
+            <img id="api-img-1" src="" alt="">
+            <p id="api-desc-1"></p>
+        </div>
+        <div class="image-card">
+            <img id="api-img-2" src="" alt="">
+            <p id="api-desc-2"></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2023 WeGa. All rights reserved.</p>
+    </footer>
+    <main>
+
+    </main>
 </body>
 </html>

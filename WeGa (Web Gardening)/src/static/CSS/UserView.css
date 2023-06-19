@@ -3,9 +3,21 @@ body {
     min-width: 437px;
 }
 
-
 header {
     position: relative;
+}
+h1 {
+    position: relative;
+    top: 70px; /* Adjust as needed */
+    right: -100px; /* Adjust as needed */
+    color: #B5838D; /* Adjust as needed */
+}
+
+h2 {
+    position: relative;
+    top: 450px; /* Adjust as needed */
+    right: -500px; /* Adjust as needed */
+    color: #B5838D; /* Adjust as needed */
 }
 
 .first-line {
@@ -54,137 +66,107 @@ header {
 }
 
 .header-buttons {
-    display: inline-block;
+    display: flex;
     padding: 8px 20px;
     transition: padding-right 0.3s ease-in-out;
+    gap: 15px;
 }
 
-.header-title {
-    background: center / cover url('https://images.unsplash.com/photo-1496661415325-ef852f9e8e7c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1227&q=80'), #B5838D;
-    background-size: 100% 100%;
-    height: 500px;
-    width: 80%;
-    transition: width 0.3s ease-in-out;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    flex-wrap: wrap;
-    align-content: center;
-    border: 2px solid #B5838D;
-    border-left: none;
-    border-right: none;
-    box-sizing: border-box;
-    padding: 0px 0px;
-    margin-top: 10px;
-    margin-left: auto;
-    margin-right: auto;
+#logout-button,
+#register-button,
+#contact-button,
+#Crops-button,
+#Products-button,
+#Cart-button{
+    padding: 17px 40px;
+    border-radius: 50px;
+    border: 0;
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 15px;
+    transition: all 0.5s ease;
+    color: #B5838D;
 }
 
-.blurred-image {
-    width: 100%;
-    height: 100%;
+#logout-button:hover,
+#register-button:hover,
+#contact-button:hover,
+#Crops-button:hover,
+#Products-button:hover,
+#Cart-button:hover{
+    letter-spacing: 3px;
+    background-color:  #B5838D;
+    color: hsl(0, 0%, 100%);
+    box-shadow:  #B5838D 0px 7px 29px 0px;
+    border: 3px solid white;
+}
+
+#logout-button:active,
+#register-button:active,
+#contact-button:active,
+#Crops-button:active,
+#Products-button:active,
+#Cart-button:active{
+    letter-spacing: 3px;
+    background-color:  #B5838D;
+    color: hsl(0, 0%, 100%);
+    box-shadow:  #B5838D 0px 0px 0px 0px;
+    transform: translateY(10px);
+    transition: 100ms;
+}
+
+.container-input {
+    position: relative;
+    top: 130px; /* Adjust as needed */
+    right: -680px; /* Adjust as needed */
+    z-index: 1;
+}
+
+.myImage {
+    width: 900px; /* or whatever size you want */
+    height: auto; /* to keep aspect ratio, or set a value */
+    display: block; /* to enable margins */
+    margin-left: 100px; /* center the image horizontally */
+    margin-right: auto; /* center the image horizontally */
+    margin-top: 100px; /* space at the top */
+}
+
+
+
+
+.input {
+    width: 150px;
+    padding: 10px 0px 10px 40px;
+    border-radius: 9999px;
+    border: solid 1px #333;
+    transition: all .2s ease-in-out;
+    outline: none;
+    opacity: 0.8;
+}
+
+.container-input svg {
     position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    filter: blur(10px);
+    top: 50%;
+    left: 10px;
+    transform: translate(0, -50%);
 }
 
-.blurred-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transform: scaleX(-1);
-}
-
-.title, .city {
-    height: 50%;
-    max-width: 70%;
-    text-decoration: none;
-    color: rgb(1, 1, 1);
-    font-family: 'Arizonia', cursive;
-    text-shadow: 0 0 10px rgba(247, 237, 226, 1);
-    transition: font-size 0.3s ease-in-out;
-    font-weight: 700;
-}
-
-.title {
-    font-size: 50px;
-    display: inline-flex;
-    align-items: flex-end;
-    vertical-align: bottom;
-}
-
-.title .first-word{
-    white-space: nowrap;
-    margin-right: 20px;
-}
-
-.title .first-letter {
-    font-size: 65px;
-    transition: font-size 0.3s ease-in-out;
-    font-weight: 900;
-    line-height: 1.1;
-    letter-spacing: 2px;
-}
-
-
-.city {
-    font-size: 55px;
-}
-
-footer {
-    display: flex;
-    justify-content: center;
-    padding: 5px;
-    background-color: #B5838D;
-    color: #fff;
+.input:focus {
+    opacity: 1;
+    width: 250px;
 }
 
 @media only screen and (max-width: 768px) {
-    .logo {
-        margin-left: 2%;
-        transition: margin-left 0.3s ease-in-out;
-    }
-
-    .header-buttons {
-        padding: 5px 5px;
-        transition: padding-right 0.3s ease-in-out;
-    }
-
-    .header-title {
-        width: 100%;
-        transition: width 0.3s ease-in-out;
-    }
-
-    .title {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        vertical-align: bottom;
-        justify-content: flex-end;
-        font-size: 40px;
+    #logout-button,
+    #register-button,
+    #contact-button,
+    #Crops-button,
+    #Products-button,
+    #Cart-button{
+        padding: 8px 20px;
+        font-size: 10px;
         transition: font-size 0.3s ease-in-out;
     }
-
-    .title .first-word {
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-
-    .title .first-letter {
-        font-size: 55px;
-        transition: font-size 0.3s ease-in-out;
-    }
-
-    .city {
-        display:flex;
-        align-items: start;
-        justify-content: center;
-        font-size: 45px;
-        transition: font-size 0.3s ease-in-out;
-        margin-bottom: -70px;
-    }
-
 }

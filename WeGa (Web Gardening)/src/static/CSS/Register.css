@@ -1,62 +1,77 @@
-body{
-    background-color:#F7EDE2;
-    padding:100px 90px 90px;
+body {
+    background-color: #F7EDE2;
+    padding: 100px 90px 90px;
     padding-bottom: 10px;
     padding-right: 5px;
     padding-left: 5px;
     padding-top: 0px;
 }
+
+button {
+    padding: 17px 40px;
+    border-radius: 50px;
+    border: 0;
+    background-color: #B5838D;
+    box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 15px;
+    transition: all .5s ease;
+    color: white;
+}
+
 button:hover {
-    background-color: #E6E6FA;
-    color: black;
-    transform :translateY(-0.25em);
+    letter-spacing: 3px;
+    background-color: white;
+    color: #B5838D;
+    box-shadow: #B5838D 0px 7px 29px 0px;
 }
 
- a{
-    color:#B5838D ;
-    text-decoration:none ;
+button:active {
+    letter-spacing: 3px;
+    background-color: white;
+    color: #B5838D;
+    box-shadow: #B5838D 0px 0px 0px 0px;
+    transform: translateY(10px);
+    transition: 100ms;
 }
 
-select{
+a {
+    color: #B5838D;
+    text-decoration: none;
+}
+
+select {
     background-color: #FAD2C9;
     width: 200px;
     height: 40px;
     border-radius: 30px;
-    border:none;
+    border: none;
     text-align: center;
 }
-option{
-    background-color: #FAD2C9;
 
+option {
+    background-color: #FAD2C9;
 }
 
-a:hover{
+a:hover {
     text-decoration: underline;
 }
-button{
-    background-color:#B5838D;
-    color:white;
-    font-weight: 700;
-    font-family: 'Raleway', sans-serif;
-    border: antiquewhite;
-    padding-block: 12px;
-    padding-inline: 48px;
-    border-radius: 30px;
-}
-.Box{
+
+.Box {
     border-style: solid;
     box-sizing: border-box;
     border-radius: 30px;
-    border-color:#F7EDE2;
+    border-color: #F7EDE2;
     padding: 30px;
     justify-content: center;
     text-align: center;
 }
 
-.Register-Form{
+.Register-Form {
     padding-block: 20px;
     padding-inline: 20px;
-    display:flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
     flex-wrap: wrap;
@@ -64,49 +79,55 @@ button{
     line-height: 3;
 }
 
-label{
+label {
     display: inline;
     width: 100px;
     text-align: left;
     margin-right: 90px;
-    float:left;
+    float: left;
     font-family: 'Raleway', sans-serif;
 }
+
 input {
     display: inline-block;
     width: 200px;
     height: 40px;
     text-align: center;
-    background-color:#FAD2C9;
+    background-color: #FAD2C9;
     border: none;
     border-radius: 50px;
 }
-h2{
+
+h2 {
     display: inline-block;
     text-align: right;
     margin-right: 40px;
-    margin-left:40px;
+    margin-left: 40px;
     font-family: 'Raleway', sans-serif;
 }
-h1{
+
+h1 {
     display: inline-block;
     text-align: right;
     font-family: 'Raleway', sans-serif;
 }
-footer{
-    display:-webkit-flex ;
+
+footer {
+    display: -webkit-flex;
     justify-content: center;
     padding: 10px;
-    background-color:#B5838D ;
+    background-color: #B5838D;
     border-radius: 50px;
-    color: #fff;}
+    color: #fff;
+}
 
-p{
-    Text-align:center;
+p {
+    text-align: center;
     font-family: 'Raleway', sans-serif;
     align-items: flex-start;
 }
-.headerButtons{
+
+.headerButtons {
     display: flex;
     padding: 5px 20px;
     align-self: center;
@@ -114,7 +135,7 @@ p{
 }
 
 .first-line {
-    background-color:#F7EDE2;
+    background-color: #F7EDE2;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -126,7 +147,9 @@ p{
 .logo {
     align-self: flex-start;
     margin-left: 0%;
-    transition: margin-left 0.3s ease-in-out;}
+    transition: margin-left 0.3s ease-in-out;
+}
+
 #WeGa {
     display: inline-block;
     text-decoration: none;
@@ -146,11 +169,13 @@ p{
     font-size: 60px;
     letter-spacing: 1px;
 }
-header{
+
+header {
     display: flex;
     justify-content: space-between;
 }
-@media(max-width: 1023px) and (min-width: 501px) {
+
+@media (max-width: 1023px) and (min-width: 501px) {
     body {
         background-repeat: no-repeat;
         background-attachment: fixed;
@@ -158,6 +183,7 @@ header{
         background-position: center;
     }
 }
+
 @media (min-width: 1024px) {
     body {
         background-repeat: no-repeat;
@@ -166,14 +192,17 @@ header{
         background-position: center;
     }
 }
-@media(max-width: 1023px) and (min-width: 501px) {
+
+@media (max-width: 1023px) and (min-width: 501px) {
     body {
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
         background-position: center;
     }
-}@media(max-width: 500px)  {
+}
+
+@media (max-width: 500px) {
     body {
         background-repeat: no-repeat;
         background-attachment: fixed;
