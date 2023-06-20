@@ -1,0 +1,486 @@
+body {
+    background-color: #F7EDE2;
+    min-width: 437px;
+}
+
+header {
+    position: relative;
+}
+
+h1 {
+    position: relative;
+    top: 70px; /* Adjust as needed */
+    right: -100px; /* Adjust as needed */
+    color: #B5838D; /* Adjust as needed */
+}
+
+h2 {
+    position: relative;
+    top: 450px; /* Adjust as needed */
+    right: -500px; /* Adjust as needed */
+    color: #B5838D; /* Adjust as needed */
+}
+
+.first-line {
+    background-color: #B5838D;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 0px;
+    margin-top: -7px;
+}
+
+.logo {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-start;
+    margin-left: 10%;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+.plant-logo {
+    margin-left: 10px;
+    margin-bottom: 12px;
+    height: 40px;
+    width: 50px;
+}
+
+#WeGa {
+    display: inline-block;
+    text-decoration: none;
+    color: #F7EDE2;
+    font-family: 'Raleway', sans-serif;
+    font-size: 40px;
+    font-weight: 900;
+    letter-spacing: 0px;
+}
+
+#WeGa .first-letter {
+    font-size: 60px;
+    letter-spacing: -6px;
+}
+
+#WeGa .third-letter {
+    font-size: 60px;
+    letter-spacing: 1px;
+}
+
+.header-buttons {
+    display: flex;
+    padding: 8px 20px;
+    transition: padding-right 0.3s ease-in-out;
+    gap: 15px;
+}
+
+#login-button,
+#logout-button,
+#register-button,
+#contact-button,
+#Crops-button,
+#Products-button,
+#Cart-button{
+    padding: 17px 40px;
+    border-radius: 50px;
+    border: 0;
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 15px;
+    transition: all 0.5s ease;
+    color: #B5838D;
+}
+
+#login-button:hover,
+#logout-button:hover,
+#register-button:hover,
+#contact-button:hover,
+#Crops-button:hover,
+#Products-button:hover,
+#Cart-button:hover{
+    letter-spacing: 3px;
+    background-color: #B5838D;
+    color: hsl(0, 0%, 100%);
+    box-shadow: #B5838D 0px 7px 29px 0px;
+    border: 3px solid white;
+}
+
+#login-button:active,
+#logout-button:active,
+#register-button:active,
+#contact-button:active,
+#Crops-button:active,
+#Products-button:active,
+#Cart-button:active{
+    letter-spacing: 3px;
+    background-color: #B5838D;
+    color: hsl(0, 0%, 100%);
+    box-shadow: #B5838D 0px 0px 0px 0px;
+    transform: translateY(10px);
+    transition: 100ms;
+}
+
+.container-input {
+    position: relative;
+    top: 130px; /* Adjust as needed */
+    right: -680px; /* Adjust as needed */
+    z-index: 1;
+}
+
+.myImage {
+    width: 900px; /* or whatever size you want */
+    height: auto; /* to keep aspect ratio, or set a value */
+    display: block; /* to enable margins */
+    margin-left: 100px; /* center the image horizontally */
+    margin-right: auto; /* center the image horizontally */
+    margin-top: 100px; /* space at the top */
+}
+
+.input {
+    width: 150px;
+    padding: 10px 0px 10px 40px;
+    border-radius: 9999px;
+    border: solid 1px #333;
+    transition: all .2s ease-in-out;
+    outline: none;
+    opacity: 0.8;
+}
+
+.container-input svg {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translate(0, -50%);
+}
+
+.input:focus {
+    opacity: 1;
+    width: 250px;
+}
+
+.card-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    filter: opacity(10%) contrast(105%);
+}
+
+.card-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 20px;
+    width: 190px;
+    height: 700px;
+    background-color: white;
+    border-radius: 30px;
+    -webkit-text-fill-color: #B5838D;
+    font-family: monospace;
+}
+
+.card-inner .title {
+    font-size: 20px;
+    font-weight: 900;
+    color: #c7c4c4;
+    text-align: left;
+    margin-bottom: 20px; /* Add space below the title */
+    border-bottom: 3px solid; /* Add a bottom border */
+    border-color: #B5838D;
+    padding-bottom: 10px; /* Add some padding below the text so the border doesn't touch it */
+}
+
+.card-inner .radio-button {
+    font-size: 15px;
+    font-weight: normal;
+    color: #c7c4c4;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 10px 0;
+}
+
+#Card-button {
+    padding: 17px 40px;
+    border-radius: 50px;
+    border: 0;
+    background-color: #B5838D;
+    box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 15px;
+    transition: all .5s ease;
+    -webkit-text-fill-color: white;
+}
+
+#Card-button:hover {
+    letter-spacing: 3px;
+    background-color: white;
+    -webkit-text-fill-color: #B5838D;
+    box-shadow: #B5838D 0px 7px 29px 0px;
+}
+
+#Card-button:active {
+    letter-spacing: 3px;
+    background-color: white;
+    color: #B5838D;
+    box-shadow: #B5838D 0px 0px 0px 0px;
+    transform: translateY(10px);
+    transition: 100ms;
+}
+
+.radio-button input[type="radio"] {
+    opacity: 0;
+    margin-right: 10px;
+}
+
+.radio {
+    position: relative;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.radio::before {
+    position: absolute;
+    content: '';
+    width: 10px;
+    height: 10px;
+    top: 5px;
+    left: 5px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.radio-button input[type="radio"]:checked + .radio {
+    border-color: #B5838D;
+    transform: translateZ(0px);
+    background-color: #fff;
+}
+
+.radio-button input[type="radio"]:checked + .radio::before {
+    opacity: 1;
+}
+
+
+
+.card2 {
+    position: relative;
+    width: 11.875em;
+    height: 16.5em;
+    margin-left: 30px;
+    margin-right:1000px ;
+    margin-top: 30px;
+    box-shadow: 0px 1px 13px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 120ms;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    padding: 0.5em;
+    padding-bottom: 3.4em;
+}
+
+.card2::after {
+    content: "Add to Cart";
+    padding-top: 1.25em;
+    padding-left: 1.25em;
+    position: absolute;
+    left: 0;
+    bottom: -60px;
+    background:#B5838D;
+    color: #fff;
+    height: 2.5em;
+    width: 90%;
+    transition: all 80ms;
+    font-weight: 600;
+    text-transform: uppercase;
+    opacity: 0;
+}
+
+.card2 .title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.9em;
+    position: absolute;
+    left: 0.625em;
+    bottom: 1.875em;
+    font-weight: 400;
+    color: #000;
+}
+
+.card2 .price {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 0.9em;
+    position: absolute;
+    left: 0.625em;
+    bottom: 0.625em;
+    color: #000;
+}
+
+.card2:hover::after {
+    bottom: 0;
+    opacity: 1;
+}
+
+.card2:active {
+    transform: scale(0.98);
+}
+
+.card2:active::after {
+    content: "Added !";
+    height: 3.125em;
+}
+
+
+
+.text {
+    max-width: 55px;
+}
+
+.image {
+    background: rgb(241, 241, 241);
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+}
+.cards-container {
+    display: flex;
+    flex-direction: row; /* Schimbă în 'column' dacă vrei ca cardurile să fie unul deasupra celuilalt */
+    justify-content: space-between; /* Ajustează după cum dorești să fie aliniate cardurile */
+    gap: 20px; /* Adaugă spațiu între carduri */
+    align-items: stretch; /* Acesta va face ca cardurile să aibă aceeași înălțime */
+}
+
+
+.image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.card3 {
+    position: relative;
+    width: 11.875em;
+    height: 16.5em;
+    margin-left: 30px;
+    margin-right: 1000px;
+    margin-top: 30px;
+    box-shadow: 0px 1px 13px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 120ms;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    padding: 0.5em;
+    padding-bottom: 3.4em;
+}
+
+.card3::after {
+    content: "Add to Cart";
+    padding-top: 1.25em;
+    padding-left: 1.25em;
+    position: absolute;
+    left: 0;
+    bottom: -60px;
+    background: #B5838D;
+    color: #fff;
+    height: 2.5em;
+    width: 90%;
+    transition: all 80ms;
+    font-weight: 600;
+    text-transform: uppercase;
+    opacity: 0;
+}
+
+.card3 .title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.9em;
+    position: absolute;
+    left: 0.625em;
+    bottom: 1.875em;
+    font-weight: 400;
+    color: #000;
+}
+
+.card3 .price {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 0.9em;
+    position: absolute;
+    left: 0.625em;
+    bottom: 0.625em;
+    color: #000;
+}
+
+.card3:hover::after {
+    bottom: 0;
+    opacity: 1;
+}
+
+.card3:active {
+    transform: scale(0.98);
+}
+
+.card3:active::after {
+    content: "Added !";
+    height: 3.125em;
+}
+
+.image2 {
+    background: rgb(241, 241, 241);
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+}
+
+.image2 img {
+    max-width: 100%;
+    height: auto;
+}
+.image3 img {
+    max-width: 100%;
+    height: auto;
+}
+.card2,
+.card3,
+.card4{
+    position: relative;
+    width: 11.875em;
+    height: 16.5em;
+    margin: auto;
+    box-shadow: 0px 1px 13px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 120ms;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    padding: 0.5em;
+    padding-bottom: 3.4em;
+}
+
+
+
+@media only screen and (max-width: 768px) {
+    #logout-button,
+    #register-button,
+    #contact-button,
+    #Crops-button,
+    #Products-button,
+    #Cart-button {
+        padding: 8px 20px;
+        font-size: 10px;
+        transition: font-size 0.3s ease-in-out;
+    }
+}
