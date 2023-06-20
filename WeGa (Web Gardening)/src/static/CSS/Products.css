@@ -123,8 +123,8 @@ h2 {
 
 .container-input {
     position: relative;
-    top: 130px;
-    right: -680px;
+    top: 130px; /* Adjust as needed */
+    right: -680px; /* Adjust as needed */
     z-index: 1;
 }
 
@@ -323,7 +323,6 @@ h2 {
     display: grid;
     place-items: center;
 }
-
 .cards-container {
     display: flex;
     flex-direction: row;
@@ -331,6 +330,7 @@ h2 {
     gap: 20px;
     align-items: stretch;
 }
+
 
 .image img {
     max-width: 100%;

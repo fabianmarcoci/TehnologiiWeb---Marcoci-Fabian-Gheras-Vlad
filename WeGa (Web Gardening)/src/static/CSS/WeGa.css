@@ -16,20 +16,20 @@ header {
     margin-top: -7px;
 }
 
-
 h1 {
     position: relative;
-    top: 70px; /* Adjust as needed */
-    padding-right: -1px; /* Adjust as needed */
-    color: #B5838D; /* Adjust as needed */
+    top: 70px;
+    color: #B5838D;
 }
 
 h2 {
     position: relative;
-    top: 450px; /* Adjust as needed */
-    right: -500px; /* Adjust as needed */
-    color: #B5838D; /* Adjust as needed */
+    top: 0px;
+    color: #B5838D;
+    border-bottom: 2px solid #B5838D;
+    width: 90%;
 }
+
 .logo {
     display: flex;
     flex-direction: row;
@@ -87,7 +87,7 @@ h2 {
     text-transform: uppercase;
     font-size: 15px;
     transition: all 0.5s ease;
-    color: #B5838D; /* Set writing color to #B5838D */
+    color: #B5838D;
 }
 
 #login-button:hover,
@@ -156,74 +156,6 @@ h2 {
     transform: scaleX(-1);
 }
 
-
-
-
-.result-title{
-    position: relative;
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 400px; /* Adjust as needed */
-    margin-left: 0px;
-    margin-bottom: 120px;
-    margin-top: 60px;
-}
-
-
-.myImage {
-    width: 900px; /* or whatever size you want */
-    height: auto; /* to keep aspect ratio, or set a value */
-    display: block; /* to enable margins */
-    margin-left: 100px; /* center the image horizontally */
-    margin-right: auto; /* center the image horizontally */
-    margin-top: 10px; /* space at the top */
-    margin-bottom:200px ;
-}
-
-.container-input {
-    position: relative; /* Add this line */
-    display: inline-block;
-    vertical-align: middle;
-    margin-top: 140px;
-    margin-left: 0px;
-    z-index: 1;
-}
-
-.input {
-    width: 150px;
-    padding: 10px 0px 10px 40px; /* Increased left padding to make room for the icon */
-    border-radius: 9999px;
-    border: solid 1px #333;
-    transition: all .2s ease-in-out;
-    outline: none;
-    opacity: 0.8;
-}
-
-.container-input svg {
-    position: absolute;
-    top: 50%;
-    left: 10px;
-    transform: translate(0, -50%);
-}
-
-.input:focus {
-    opacity: 1;
-    width: 250px;
-}
-
-.search-title {
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 20px; /* Adjust as needed */
-    margin-left: 100px;
-}
-
-
-
-
-
-
-
 .title,
 .city {
     height: 50%;
@@ -270,6 +202,165 @@ h2 {
 }
 .image-card img {
     max-width: 100%;
+}
+
+.container-input {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 140px;
+    margin-left: 0px;
+    z-index: 1;
+}
+
+.input {
+    width: 150px;
+    padding: 10px 0px 10px 40px;
+    border-radius: 9999px;
+    border: solid 1px #333;
+    transition: all .2s ease-in-out;
+    outline: none;
+    opacity: 0.8;
+}
+
+.container-input svg {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translate(0, -50%);
+}
+
+.input:focus {
+    opacity: 1;
+    width: 250px;
+}
+
+.search-title {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 20px;
+    margin-left: 100px;
+}
+
+.recommended {
+    margin-left: 100px;
+}
+
+
+.input {
+    width: 150px;
+    padding: 10px 0px 10px 40px;
+    border-radius: 9999px;
+    border: solid 1px #333;
+    transition: all .2s ease-in-out;
+    outline: none;
+    opacity: 0.8;
+}
+
+.container-input svg {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translate(0, -50%);
+}
+
+.input:focus {
+    opacity: 1;
+    width: 250px;
+}
+
+.card2::after {
+    content: "Add to Cart";
+    padding-top: 1.25em;
+    padding-left: 1.25em;
+    position: absolute;
+    left: 0;
+    bottom: -60px;
+    background:#B5838D;
+    color: #fff;
+    height: 2.5em;
+    width: 90%;
+    transition: all 80ms;
+    font-weight: 600;
+    text-transform: uppercase;
+    opacity: 0;
+}
+
+.card2 .title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.9em;
+    position: absolute;
+    left: 0.625em;
+    bottom: 1.875em;
+    font-weight: 400;
+    color: #000;
+}
+
+.card2 .price {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 0.9em;
+    position: absolute;
+    left: 0.625em;
+    bottom: 0.625em;
+    color: #000;
+}
+
+.card2:hover::after {
+    bottom: 0;
+    opacity: 1;
+}
+
+.card2:active {
+    transform: scale(0.98);
+}
+
+.card2:active::after {
+    content: "Added !";
+    height: 3.125em;
+}
+
+.text {
+    max-width: 55px;
+}
+
+.image {
+    background: rgb(241, 241, 241);
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+}
+.cards-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: stretch;
+}
+
+.image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.card2 {
+    position: relative;
+    width: 11.875em;
+    height: 12.5em;
+    margin: auto;
+    box-shadow: 0px 1px 13px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 120ms;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    padding: 0.5em;
+    padding-bottom: 3.4em;
+}
+
+.result-title {
+    margin-left: 100px;
 }
 
 footer {
