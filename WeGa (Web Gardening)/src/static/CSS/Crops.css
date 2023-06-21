@@ -66,6 +66,39 @@ h2 {
     letter-spacing: 1px;
 }
 
+.button {
+    padding: 17px 40px;
+    border-radius: 50px;
+    border: 0;
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 15px;
+    transition: all 0.5s ease;
+    color: #B5838D;
+    text-decoration: none; /* Remove underline */
+}
+
+.button:hover {
+    letter-spacing: 3px;
+    background-color: #B5838D;
+    color: hsl(0, 0%, 100%);
+    box-shadow: #B5838D 0px 7px 29px 0px;
+    border: 3px solid white;
+    text-decoration: none; /* Remove underline */
+}
+
+.button:active {
+    letter-spacing: 3px;
+    background-color: #B5838D;
+    color: hsl(0, 0%, 100%);
+    box-shadow: #B5838D 0px 0px 0px 0px;
+    transform: translateY(10px);
+    transition: 100ms;
+}
+
+
 .header-buttons {
     display: flex;
     padding: 8px 20px;
@@ -365,5 +398,17 @@ h2 {
         padding: 8px 20px;
         font-size: 10px;
         transition: font-size 0.3s ease-in-out;
+    }
+
+    .Box {
+        text-align: center;
+    }
+
+    .Register-Form input {
+        width: 100%;
+    }
+
+    .Box button {
+        width: 100%;
     }
 }
