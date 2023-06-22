@@ -24,18 +24,19 @@
     REGISTER
 </h1>
 
-<form action="" method="get" class="Register-Form">
+    <form action="/register" method="POST" class="Register-Form">
 
         <label for="email">Email: </label>
         <input type="text" name="email" id="email" placeholder="Enter your email" required >
 
         <label for="name"> Full name: </label>
-        <input type="name" name="name" id="name" placeholder="Enter your name" required >
+        <input type="text" name="name" id="name" placeholder="Enter your name" required >
 
-        <label>Age:</label>
-        <input type="number" placeholder = "Enter your age" required>
-        <label for="Gender"> Gender: </label>
-        <select name="Gender" id ="Gender" required>
+        <label for="age">Age:</label>
+        <input type="number" name="age" id="age" placeholder = "Enter your age" required>
+
+        <label for="gender"> Gender: </label>
+        <select name="gender" id ="gender" required>
             <option value="">--Please choose an option--</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
@@ -44,8 +45,12 @@
 
         <label for="password"> Password: </label>
         <input type="password" name="password" id="password" placeholder="Type your password" minlength="5"  maxlength="20" required >
-</form>
-    <p><button>CREATE ACCOUNT</button></p>
+
+        <p><button type="submit">CREATE ACCOUNT</button></p>
+
+    </form>
+
+
     <h2>
         Have an account? <a href ="http://localhost:63342/WeGa.html/Login.html?_ijt=6321djh3pe701sk6siek1cqc2l&_ij_reload=RELOAD_ON_SAVE " >Log in.</a>
     </h2>
