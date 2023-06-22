@@ -46,7 +46,16 @@ const server = http.createServer((req, res) => {
                 body += chunk.toString();
             });
             req.on('end', async () => {
-                const data = querystring.parse(body);
+                let data;
+                const contentType = req.headers['content-type'];
+                if (contentType === 'application/x-www-form-urlencoded') {
+                    data = querystring.parse(body);
+                } else {
+                    res.writeHead(400);
+                    res.end('Bad Request: expecting application/x-www-form-urlencoded content-type');
+                    return;
+                }
+
                 const validationError = validateData(data);
 
                 if (validationError) {

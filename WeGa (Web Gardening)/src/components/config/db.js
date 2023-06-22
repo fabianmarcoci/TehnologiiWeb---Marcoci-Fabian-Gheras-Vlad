@@ -12,6 +12,12 @@ const pool = new Pool({
 
 // test query
 pool.query('SELECT NOW()', (err, res) => {
-    console.log(err, res);
+    if (err) {
+        console.log('Error executing query:', err);
+    } else {
+        console.log('Query result:', res);
+    }
     pool.end();
 });
+
+module.exports = pool;

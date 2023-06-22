@@ -2,8 +2,8 @@ const User = require('../model/user.model');
 const userRepository = require('../repository/user.repository');
 
 module.exports = {
-    register: async function(req, res) {
-        const user = new User(req.body.email, req.body.name, req.body.age, req.body.gender, req.body.password);
+    register: async function(data, res) {
+        const user = new User(data.email, data.name, data.age, data.gender, data.password);
         try {
             await userRepository.createUser(user);
             res.end('Registration successful.');
