@@ -29,49 +29,47 @@ function validateData(data) {
 }
 
 const server = http.createServer((req, res) => {
-    if (req.url === '/register') {
-        if (req.method === 'GET') {
-            fs.readFile(path.join(__dirname, '../../views/HTML/Register.html'), (err, data) => {
-                if (err) {
-                    res.writeHead(500);
-                    return res.end('Error loading Register.html');
-                }
+    if (req.url === '/register' && req.method === 'POST') {
+        let body = '';
+        req.on('data', chunk => {
+            body += chunk.toString();
+            console.log('data sends:' + body);
+        });
+        req.on('end', async () => {
+            let data;
+            const contentType = req.headers['content-type'];
+            if (contentType === 'application/x-www-form-urlencoded') {
+                data = querystring.parse(body);
+            } else {
+                res.writeHead(400);
+                res.end('Bad Request: expecting application/x-www-form-urlencoded content-type');
+                return;
+            }
 
-                res.writeHead(200, {'Content-Type': 'text/html'});
-                res.end(data);
-            });
-        } else if (req.method === 'POST') {
-            let body = '';
-            req.on('data', chunk => {
-                body += chunk.toString();
-            });
-            req.on('end', async () => {
-                let data;
-                const contentType = req.headers['content-type'];
-                if (contentType === 'application/x-www-form-urlencoded') {
-                    data = querystring.parse(body);
-                } else {
-                    res.writeHead(400);
-                    res.end('Bad Request: expecting application/x-www-form-urlencoded content-type');
-                    return;
-                }
+            const validationError = validateData(data);
 
-                const validationError = validateData(data);
+            if (validationError) {
+                res.end(validationError);
+                return;
+            }
 
-                if (validationError) {
-                    res.end(validationError);
-                    return;
-                }
+            await userController.register(data, res);
+        });
+    } else if (req.url === '/register' && req.method === 'GET') {
+        fs.readFile(path.join(__dirname, '../../views/HTML/register.html'), (err, data) => {
+            if (err) {
+                res.writeHead(500);
+                return res.end('Error loading register.html');
+            }
 
-                await userController.register(data, res);
-            });
-        } else {
-            res.end('Invalid request method.');
-        }
+            res.writeHead(200, {'Content-Type': 'text/html'});
+            res.end(data);
+        });
     } else {
         res.end('Invalid request URL.');
     }
 });
+
 
 const port = 63342;
 server.listen(port, () => {

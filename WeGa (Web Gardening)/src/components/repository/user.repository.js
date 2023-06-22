@@ -7,10 +7,16 @@ module.exports = {
     createUser: async function(user) {
         const { email, name, age, gender, password } = user;
         const hashedPassword = await bcrypt.hash(password, saltRounds);
-        const res = await pool.query(
-            'INSERT INTO public.users (email, full_name, age, gender, password) VALUES ($1, $2, $3, $4, $5)',
-            [email, name, age, gender, hashedPassword]
-        );
-        return res;
+        console.log('data gets: ' + user.email);
+        try {
+            const res = await pool.query(
+                'INSERT INTO public.users (email, full_name, age, gender, password) VALUES ($1, $2, $3, $4, $5)',
+                [email, name, age, gender, hashedPassword]
+            );
+            return res;
+        } catch (error) {
+            console.error('An error occurred:', error);
+        }
     }
 }
+

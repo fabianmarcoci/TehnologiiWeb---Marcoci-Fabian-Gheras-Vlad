@@ -17,7 +17,6 @@ pool.query('SELECT NOW()', (err, res) => {
     } else {
         console.log('Query result:', res);
     }
-    pool.end();
 });
 
 module.exports = pool;
