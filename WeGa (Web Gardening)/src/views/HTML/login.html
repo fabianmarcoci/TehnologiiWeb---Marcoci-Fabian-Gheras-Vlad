@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>SIGN IN</title>
-    <link rel="stylesheet" href="../../static/CSS/Login.css">
+    <link rel="stylesheet" href="../../static/CSS/login.css">
     <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@800&display=swap" rel="stylesheet">
@@ -25,15 +25,16 @@
         Sign In
     </h1>
 
-    <form action="" method="get" class="Register-Form">
-
+    <form action="/login" method="POST" class="Login-Form">
         <label for="email">Email: </label>
         <input type="text" name="email" id="email" placeholder="Enter your email" required >
 
         <label for="password"> Password: </label>
         <input type="password" name="password" id="password" placeholder="Type your password" minlength="5"  maxlength="20" required >
+
+        <p><button type="submit">SUBMIT</button></p>
     </form>
-    <p><button>SUBMIT</button></p>
+
     <h2>
        Don't have an account? <a href ="register.html " >Register.</a>
     </h2>

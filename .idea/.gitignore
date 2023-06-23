@@ -5,4 +5,5 @@
 /httpRequests/
 
 # Custom ignored files
-.env
+/.env
+/node_modules
