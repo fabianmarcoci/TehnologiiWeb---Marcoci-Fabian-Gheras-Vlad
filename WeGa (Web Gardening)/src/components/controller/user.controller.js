@@ -4,6 +4,8 @@ const querystring = require('querystring');
 const userRepository = require('../repository/user.repository');
 const User = require('../model/user.model');
 const bcrypt = require('bcrypt');
+const Mailer = require('../system/mail');
+const mailer = new Mailer();
 
 function validateData(data) {
     if (!data.email.includes('@')) {
@@ -55,6 +57,13 @@ async function handleRegisterPostRequest(req, res) {
         const user = new User(data.email, data.name, data.age, data.gender, data.password);
         try {
             await userRepository.createUser(user);
+            await mailer.sendMail({
+                to: user.email,
+                subject: 'Registration Successful',
+                text: 'Congratulations! You have successfully registered.',
+                html: '<p>Congratulations! You have successfully registered.</p>',
+            });
+
             res.end('Registration successful.');
         } catch (err) {
             if (err.code === '23505') {
