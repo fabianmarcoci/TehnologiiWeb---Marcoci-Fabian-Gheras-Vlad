@@ -1,5 +1,3 @@
-const fs = require('fs');
-const path = require('path');
 const querystring = require('querystring');
 const userRepository = require('../repository/user.repository');
 const User = require('../model/user.model');
@@ -96,46 +94,29 @@ async function handleLoginPostRequest(req, res) {
         const user = await userRepository.findUserByEmail(email);
 
         if (!user) {
-            return res.end('Invalid email or password.');
+            res.writeHead(401);
+            return res.end(JSON.stringify({ error: 'Invalid email or password.' }));
         }
 
         const validPassword = await bcrypt.compare(password, user.password);
 
         if (!validPassword) {
-            return res.end('Invalid email or password.');
+            res.writeHead(401);
+            return res.end(JSON.stringify({ error: 'Invalid email or password.' }));
         }
 
-        return res.end('Logged in successfully.');
-    });
-}
+        res.writeHead(302, {
+            'Location': '/index.html',
+            'Set-Cookie': 'loggedIn=true'
+        });
 
-function handleRegisterGetRequest(req, res) {
-    fs.readFile(path.join(__dirname, '../../views/HTML/register.html'), (err, data) => {
-        if (err) {
-            res.writeHead(500);
-            return res.end('Error loading register.html');
-        }
-        res.writeHead(200, {'Content-Type': 'text/html'});
-        res.end(data);
-    });
-}
-
-function handleLoginGetRequest(req, res) {
-    fs.readFile(path.join(__dirname, '../../views/HTML/login.html'), (err, data) => {
-        if (err) {
-            res.writeHead(500);
-            return res.end('Error loading login.html');
-        }
-        res.writeHead(200, {'Content-Type': 'text/html'});
-        res.end(data);
+        return res.end();
     });
 }
 
 module.exports = {
     handleRegisterPostRequest,
-    handleRegisterGetRequest,
     handleLoginPostRequest,
-    handleLoginGetRequest
 }
 
 

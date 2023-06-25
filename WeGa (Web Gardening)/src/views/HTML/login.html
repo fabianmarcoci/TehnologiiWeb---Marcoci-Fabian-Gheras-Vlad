@@ -15,7 +15,7 @@
         <a href="#" id="WeGa"><span class="first-letter">W</span>e<span class="third-letter">G</span>a</a>
     </div>
     <div class = "headerButtons">
-        <a href="wega.html" class="button">Home</a>
+        <a href="index.html" class="button">Home</a>
 
 
     </div>
@@ -25,19 +25,44 @@
         Sign In
     </h1>
 
-    <form action="/login" method="POST" class="Login-Form">
-        <label for="email">Email: </label>
+    <form action="/login" method="POST" class="Login-Form" id="login-form">
+    <label for="email">Email: </label>
         <input type="text" name="email" id="email" placeholder="Enter your email" required >
 
         <label for="password"> Password: </label>
         <input type="password" name="password" id="password" placeholder="Type your password" minlength="5"  maxlength="20" required >
 
         <p><button type="submit">SUBMIT</button></p>
+        <p id="error-message" style="color: red;"></p>
     </form>
 
     <h2>
        Don't have an account? <a href ="register.html " >Register.</a>
     </h2>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: `email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
+            }).then(response => {
+                if (response.status === 200) {
+                    window.location.href = response.headers.get('Location');
+                } else {
+                    response.json().then(data => {
+                        document.getElementById('error-message').textContent = data.error;
+                    });
+                }
+            });
+        });
+    </script>
 </div>
 </body>
 <footer>
