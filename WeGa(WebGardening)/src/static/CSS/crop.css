@@ -1,0 +1,46 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #FAD2C9;
+}
+
+.card {
+    width: 600px;
+    height: 600px;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.plant-name {
+    font-size: 24px;
+    margin-top: 0;
+    color: #B5838D;
+}
+
+.plant-price {
+    font-size: 17px;
+    margin-bottom: 10px;
+    color: #B5838D;
+}
+
+.plant-description,
+.additional-factors,
+.seasonal-behavior {
+    margin-bottom: 10px;
+    margin-top: 40px;
+    color: #B5838D;
+}
+
+.plant-image {
+    width: 150px;
+    height: auto;
+    margin-bottom: 30px;
+    margin-top: 135px;
+
+}

@@ -100,10 +100,13 @@ h2 {
 
 
 .header-buttons {
-    display: inline-block;
-    padding: 8px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 5px;
     transition: padding-right 0.3s ease-in-out;
 }
+
 
 #login-button,
 #register-button,
@@ -506,7 +509,25 @@ footer {
         font-size: 10px;
     }
 
+    .search-title{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        vertical-align: bottom;
+        justify-content: flex-end;
+        font-size: 10px;
+        transition: font-size 0.3s ease-in-out;
+    }
 
+    .result-title{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        vertical-align: bottom;
+        justify-content: flex-end;
+        font-size: 10px;
+        transition: font-size 0.3s ease-in-out;
+    }
 }
 
 
@@ -579,6 +600,27 @@ footer {
         margin-bottom: -70px;
     }
 
+    .search-title{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        vertical-align: bottom;
+        justify-content: flex-end;
+        font-size: 10px;
+        transition: font-size 0.3s ease-in-out;
+    }
+
+    .result-title{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        vertical-align: bottom;
+        justify-content: flex-end;
+        font-size: 10px;
+        transition: font-size 0.3s ease-in-out;
+    }
+
+
 
     .header-buttons {
         justify-content: center; /* Center the buttons */
@@ -586,7 +628,7 @@ footer {
     }
 
     .button {
-        padding: 3px 15px;
+        padding: 5px 15px;
         font-size: 10px;
     }
 }
