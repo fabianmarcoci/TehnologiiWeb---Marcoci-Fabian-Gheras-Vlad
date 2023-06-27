@@ -26,6 +26,10 @@ const server = http.createServer((req, res) => {
             htmlController.handleProductsGetRequest(req, res);
         } else if (pathname.endsWith('/crops.html')) {
             htmlController.handleCropsGetRequest(req, res);
+        } else if (pathname.endsWith('/crop.html')) {
+            htmlController.handleCropGetRequest(req, res);
+        } else if (pathname.endsWith('/userview.html')) {
+            htmlController.handleUserViewGetRequest(req, res);
         } else if (pathname.endsWith('.css')) {
             let relativePath = pathname.slice('/TehnologiiWeb---Marcoci-Fabian-Gheras-Vlad/WeGa(WebGardening)/'.length);
             let fullPath = path.join(root, relativePath);

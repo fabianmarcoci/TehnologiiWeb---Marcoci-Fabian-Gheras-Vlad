@@ -16,7 +16,7 @@
 <header>
     <div class="first-line">
         <div class="logo">
-            <a href="wega.html" id="WeGa"><span class="first-letter">W</span>e<span class="third-letter">G</span>a</a>
+            <a href="userview.html" id="WeGa"><span class="first-letter">W</span>e<span class="third-letter">G</span>a</a>
             <img src="../../static/img/favicon.png" class="plant-logo" alt="Plant Logo">
         </div>
 
@@ -24,12 +24,12 @@
             <a href="crops.html" class="button">Crops</a>
             <a href="products.html" class="button">Products</a>
             <a href="shoppingcart.html" class="button">Shopping cart</a>
-            <a href="logout.html" class="button">Logout</a>
+            <a href="#" class="button" onclick="logout()">Logout</a>
 
         </div>
 
     </div>
-    </div>
+
     <h1 class="header-title">
         <span class="title"><span class="first-word"><span class="first-letter">G</span>radina </span>ta</span>
         <span class="city"></span>
@@ -154,6 +154,15 @@
 <div>
     <h2 class="result-title"> Suggested recipes for you based on your search </h2>
 </div>
+
+<script>
+    function logout() {
+        document.cookie = "email=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        document.cookie = "password=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        document.cookie = "loggedIn=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        window.location.href = '/TehnologiiWeb---Marcoci-Fabian-Gheras-Vlad/WeGa(WebGardening)/src/views/HTML/index.html';
+    }
+</script>
 <footer>
     <p>© 2023 WeGa. All rights reserved.</p>
 </footer>

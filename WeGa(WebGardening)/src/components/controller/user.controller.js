@@ -105,12 +105,9 @@ async function handleLoginPostRequest(req, res) {
             return res.end(JSON.stringify({ error: 'Invalid email or password.' }));
         }
 
-        res.writeHead(302, {
-            'Location': '/index.html',
-            'Set-Cookie': 'loggedIn=true'
-        });
-
-        return res.end();
+        res.setHeader('Set-Cookie', 'loggedIn=true');
+        res.statusCode = 200;
+        res.end(JSON.stringify({ location: '/TehnologiiWeb---Marcoci-Fabian-Gheras-Vlad/WeGa(WebGardening)/src/views/HTML/userview.html' }));
     });
 }
 
