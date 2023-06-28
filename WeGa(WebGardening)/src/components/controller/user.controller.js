@@ -117,6 +117,7 @@ async function handleLoginPostRequest(req, res) {
     });
 }
 
+
 module.exports = {
     handleRegisterPostRequest,
     handleLoginPostRequest,

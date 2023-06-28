@@ -131,17 +131,18 @@
     <script>
         window.onload = function() {
             var loggedIn = document.cookie.includes('loggedIn=true');
+
             if (loggedIn) {
                 document.getElementById('login-button').style.display = 'none';
                 document.getElementById('register-button').style.display = 'none';
                 document.getElementById('logout-button').style.display = 'block';
-            }
 
-            document.querySelectorAll('.add-to-cart').forEach(function(button) {
-                button.addEventListener('click', function(event) {
-                    addToCart(event.target.parentElement);
+                var logoLink = document.getElementById('WeGa');
+                logoLink.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    window.location.href = 'userview.html';
                 });
-            });
+            }
         }
 
         function logout() {
@@ -152,6 +153,17 @@
         }
 
         function addToCart(card) {
+            var loggedIn = document.cookie.includes('loggedIn=true');
+            if (!loggedIn) {
+                alert("Please log in to add items to the cart.");
+                return;
+            }
+
+            var addToCartButton = card.querySelector('.add-to-cart');
+
+            addToCartButton.classList.add("disabled");
+            addToCartButton.textContent = "Added !";
+
             if (localStorage.getItem('cart') === null) {
                 localStorage.setItem('cart', JSON.stringify([]));
             }
@@ -174,11 +186,13 @@
                 };
                 cart.push(item);
             }
-            console.log(item.count);
+
             localStorage.setItem('cart', JSON.stringify(cart));
 
-            var addToCartDiv = card.querySelector('.add-to-cart');
-            addToCartDiv.textContent = 'Added !';
+            setTimeout(function() {
+                addToCartButton.classList.remove("disabled");
+                addToCartButton.textContent = "Add to Cart";
+            }, 2000);
         }
     </script>
 </body>

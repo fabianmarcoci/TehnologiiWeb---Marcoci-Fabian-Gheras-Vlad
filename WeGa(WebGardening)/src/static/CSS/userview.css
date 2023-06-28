@@ -78,7 +78,7 @@ h2 {
     font-size: 15px;
     transition: all 0.5s ease;
     color: #B5838D;
-    text-decoration: none; /* Remove underline */
+    text-decoration: none;
 }
 
 .button:hover {
@@ -581,8 +581,8 @@ footer {
 
 
     .header-buttons {
-        justify-content: center; /* Center the buttons */
-        margin: 0; /* Remove the margin */
+        justify-content: center;
+        margin: 0;
     }
 
     .button {

@@ -5,6 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const url = require('url');
 const root = path.resolve(__dirname, '../../../');
+const cartController = require('../controller/cart.controller');
 
 const server = http.createServer((req, res) => {
     const parsedUrl = url.parse(req.url);
@@ -30,6 +31,11 @@ const server = http.createServer((req, res) => {
             htmlController.handleCropGetRequest(req, res);
         } else if (pathname.endsWith('/userview.html')) {
             htmlController.handleUserViewGetRequest(req, res);
+        } else if (pathname.startsWith('/api/cart')) {
+            const parsedUrl = new URL(req.url, `http://${req.headers.host}`);
+            const email = parsedUrl.searchParams.get('email');
+
+            cartController.handleShoppingCartRequest(req, res, email);
         } else if (pathname.endsWith('.css')) {
             let relativePath = pathname.slice('/TehnologiiWeb---Marcoci-Fabian-Gheras-Vlad/WeGa(WebGardening)/'.length);
             let fullPath = path.join(root, relativePath);

@@ -46,6 +46,13 @@
                 document.getElementById('login-button').style.display = 'none';
                 document.getElementById('register-button').style.display = 'none';
                 document.getElementById('logout-button').style.display = 'block';
+
+                var logoLink = document.getElementById('WeGa');
+                logoLink.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    window.location.href = 'userview.html';
+                });
+
                 loadCart();
             } else {
                 document.getElementById('cart-items').innerHTML = '<h2>Please login to view and use the shopping cart</h2>';
@@ -60,73 +67,73 @@
         }
 
         function loadCart() {
-            var cartInfo = document.getElementById('cart-info');
-            var cart = JSON.parse(localStorage.getItem('cart')) || [];
-            var cartItems = document.getElementById('cart-items');
+            var email = document.cookie.split('; ').find(row => row.startsWith('email=')).split('=')[1];
 
-            if (cart.length === 0) {
-                cartInfo.style.display = 'block';
-            } else {
-                cartInfo.style.display = 'none';
-                cartItems.innerHTML = '';
+            fetch(`/api/cart?email=${email}`)
+                .then(response => response.json())
+                .then(cart => {
+                    var cartInfo = document.getElementById('cart-info');
+                    var cartItems = document.getElementById('cart-items');
 
-                cart.forEach(function (item, index) {
-                    var itemElement = document.createElement('div');
-                    itemElement.classList.add('clearfix');
-                    itemElement.innerText = item.title + ': ' + item.price + ' (' + item.count + 'x)';
+                    if (cart.length === 0) {
+                        cartInfo.style.display = 'block';
+                    } else {
+                        cartInfo.style.display = 'none';
+                        cartItems.innerHTML = '';
 
-                    var itemImg = document.createElement('img');
-                    itemImg.src = item.img;
-                    itemImg.style.width = '52px';
-                    itemImg.style.height = '52px';
-                    itemImg.style.float = 'left';
-                    itemImg.style.marginRight = '10px';
+                        cart.forEach(function (item, index) {
+                            var itemElement = document.createElement('div');
+                            itemElement.classList.add('clearfix');
+                            itemElement.innerText = item.title + ': ' + item.price + ' (' + item.count + 'x)';
 
-                    var plusButton = document.createElement('button');
-                    plusButton.innerText = '+';
-                    plusButton.addEventListener('click', function () {
-                        item.count++;
-                        localStorage.setItem('cart', JSON.stringify(cart));
-                        location.reload();
-                    });
+                            var itemImg = document.createElement('img');
+                            itemImg.src = item.img;
+                            itemImg.style.width = '52px';
+                            itemImg.style.height = '52px';
+                            itemImg.style.float = 'left';
+                            itemImg.style.marginRight = '10px';
 
-                    var minusButton = document.createElement('button');
-                    minusButton.innerText = '-';
-                    minusButton.addEventListener('click', function () {
-                        if (item.count > 1) {
-                            item.count--;
-                            localStorage.setItem('cart', JSON.stringify(cart));
-                            location.reload();
-                        } else {
-                            var confirmDelete = confirm('You want to remove this item?');
-                            if (confirmDelete) {
-                                cart.splice(index, 1);
-                                localStorage.setItem('cart', JSON.stringify(cart));
+                            var plusButton = document.createElement('button');
+                            plusButton.innerText = '+';
+                            plusButton.addEventListener('click', function () {
+                                item.count++;
                                 location.reload();
-                            }
-                        }
-                    });
+                            });
 
-                    var removeButton = document.createElement('button');
-                    removeButton.innerText = 'Remove';
-                    removeButton.addEventListener('click', function () {
-                        var confirmDelete = confirm('You want to remove this item?');
-                        if (confirmDelete) {
-                            cart.splice(index, 1);
-                            localStorage.setItem('cart', JSON.stringify(cart));
-                            location.reload();
-                        }
-                    });
+                            var minusButton = document.createElement('button');
+                            minusButton.innerText = '-';
+                            minusButton.addEventListener('click', function () {
+                                if (item.count > 1) {
+                                    item.count--;
+                                    location.reload();
+                                } else {
+                                    var confirmDelete = confirm('You want to remove this item?');
+                                    if (confirmDelete) {
+                                        cart.splice(index, 1);
+                                        location.reload();
+                                    }
+                                }
+                            });
 
-                    itemElement.appendChild(itemImg);
-                    itemElement.appendChild(plusButton);
-                    itemElement.appendChild(minusButton);
-                    itemElement.appendChild(removeButton);
-                    cartItems.appendChild(itemElement);
+                            var removeButton = document.createElement('button');
+                            removeButton.innerText = 'Remove';
+                            removeButton.addEventListener('click', function () {
+                                var confirmDelete = confirm('You want to remove this item?');
+                                if (confirmDelete) {
+                                    cart.splice(index, 1);
+                                    location.reload();
+                                }
+                            });
+
+                            itemElement.appendChild(itemImg);
+                            itemElement.appendChild(plusButton);
+                            itemElement.appendChild(minusButton);
+                            itemElement.appendChild(removeButton);
+                            cartItems.appendChild(itemElement);
+                        });
+                    }
                 });
-            }
         }
     </script>
-
 </body>
 </html>
