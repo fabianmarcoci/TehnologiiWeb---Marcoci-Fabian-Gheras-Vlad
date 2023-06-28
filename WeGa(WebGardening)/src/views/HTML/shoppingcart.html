@@ -21,57 +21,112 @@
         </div>
 
         <div class="header-buttons">
-            <a href="login.html" class="button">Login</a>
-            <a href="register.html" class="button">Register</a>
+            <a href="login.html" class="button" id="login-button">Login</a>
+            <a href="register.html" class="button" id="register-button">Register</a>
+            <a href="#" class="button" id="logout-button" style="display: none;" onclick="logout()">Logout</a>
             <a href="products.html" class="button">Products</a>
         </div>
-
     </div>
 </header>
 
-
-    <div class="cart-title">
-    <h1>My shopping cart</h1>
-    </div>
-
-    <div class="cart-info">
-        <h2>Your shopping cart contains no products. To add products to the basket, please return to the store.</h2>
-    </div>
-
-    <div class="recom-info">
-        <h2>Until you decide, We have some recommendations for you that are on sale</h2>
-    </div>
-
-
-
-<div class="cards-container">
-
-    <div class="card2">
-        <div class="image">
-            <img src="../../static/img/lalele.jpg" alt="A description of the image">
+    <div class="cart-section">
+        <div class="cart-title">
+            <h1>My shopping cart</h1>
         </div>
-        <span class="title">Lalele</span>
-        <span class="price">100 ron</span>
-    </div>
-
-    <div class="card3">
-        <div class="image2">
-            <img src="../../static/img/trandafiri.jpg" alt="A description of the other image">
+        <div id="cart-items"></div>
+        <div id="cart-info" class="cart-info" style="display: none;">
+            <h2>Your shopping cart contains no products. To add products to the basket, please return to the store.</h2>
         </div>
-        <span class="title">Trandafiri</span>
-        <span class="price">200 ron</span>
     </div>
 
-    <div class="card3">
-        <div class="image3">
-            <img src="../../static/img/crizanteme.jpg" alt="A description of the other image">
-        </div>
-        <span class="title">Crizanteme</span>
-        <span class="price">150 ron</span>
-    </div>
+    <script>
+        window.onload = function() {
+            var loggedIn = document.cookie.includes('loggedIn=true');
+            if (loggedIn) {
+                document.getElementById('login-button').style.display = 'none';
+                document.getElementById('register-button').style.display = 'none';
+                document.getElementById('logout-button').style.display = 'block';
+                loadCart();
+            } else {
+                document.getElementById('cart-items').innerHTML = '<h2>Please login to view and use the shopping cart</h2>';
+            }
+        }
 
-    </div>
-    </div>
-    </body>
-    </html>
+        function logout() {
+            document.cookie = "email=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            document.cookie = "password=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            document.cookie = "loggedIn=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            window.location.href = '/TehnologiiWeb---Marcoci-Fabian-Gheras-Vlad/WeGa(WebGardening)/src/views/HTML/index.html';
+        }
 
+        function loadCart() {
+            var cartInfo = document.getElementById('cart-info');
+            var cart = JSON.parse(localStorage.getItem('cart')) || [];
+            var cartItems = document.getElementById('cart-items');
+
+            if (cart.length === 0) {
+                cartInfo.style.display = 'block';
+            } else {
+                cartInfo.style.display = 'none';
+                cartItems.innerHTML = '';
+
+                cart.forEach(function (item, index) {
+                    var itemElement = document.createElement('div');
+                    itemElement.classList.add('clearfix');
+                    itemElement.innerText = item.title + ': ' + item.price + ' (' + item.count + 'x)';
+
+                    var itemImg = document.createElement('img');
+                    itemImg.src = item.img;
+                    itemImg.style.width = '52px';
+                    itemImg.style.height = '52px';
+                    itemImg.style.float = 'left';
+                    itemImg.style.marginRight = '10px';
+
+                    var plusButton = document.createElement('button');
+                    plusButton.innerText = '+';
+                    plusButton.addEventListener('click', function () {
+                        item.count++;
+                        localStorage.setItem('cart', JSON.stringify(cart));
+                        location.reload();
+                    });
+
+                    var minusButton = document.createElement('button');
+                    minusButton.innerText = '-';
+                    minusButton.addEventListener('click', function () {
+                        if (item.count > 1) {
+                            item.count--;
+                            localStorage.setItem('cart', JSON.stringify(cart));
+                            location.reload();
+                        } else {
+                            var confirmDelete = confirm('You want to remove this item?');
+                            if (confirmDelete) {
+                                cart.splice(index, 1);
+                                localStorage.setItem('cart', JSON.stringify(cart));
+                                location.reload();
+                            }
+                        }
+                    });
+
+                    var removeButton = document.createElement('button');
+                    removeButton.innerText = 'Remove';
+                    removeButton.addEventListener('click', function () {
+                        var confirmDelete = confirm('You want to remove this item?');
+                        if (confirmDelete) {
+                            cart.splice(index, 1);
+                            localStorage.setItem('cart', JSON.stringify(cart));
+                            location.reload();
+                        }
+                    });
+
+                    itemElement.appendChild(itemImg);
+                    itemElement.appendChild(plusButton);
+                    itemElement.appendChild(minusButton);
+                    itemElement.appendChild(removeButton);
+                    cartItems.appendChild(itemElement);
+                });
+            }
+        }
+    </script>
+
+</body>
+</html>

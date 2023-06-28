@@ -51,6 +51,11 @@ async function handleRegisterPostRequest(req, res) {
             res.end(validationError);
             return;
         }
+        const existingUser = await userRepository.findUserByEmail(data.email);
+        if (existingUser) {
+            res.end('An account with this email already exists.');
+            return;
+        }
 
         const user = new User(data.email, data.name, data.age, data.gender, data.password);
         try {
@@ -62,6 +67,7 @@ async function handleRegisterPostRequest(req, res) {
                 html: '<p>Congratulations! You have successfully registered.</p>',
             });
 
+            res.writeHead(302, { 'Location': '/TehnologiiWeb---Marcoci-Fabian-Gheras-Vlad/WeGa(WebGardening)/src/views/HTML/index.html' });
             res.end('Registration successful.');
         } catch (err) {
             if (err.code === '23505') {

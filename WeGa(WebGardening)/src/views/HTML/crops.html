@@ -21,107 +21,166 @@
         </div>
 
         <div class="header-buttons">
-            <a href="login.html" class="button">Login</a>
-            <a href="register.html" class="button">Register</a>
+            <a href="login.html" class="button" id="login-button">Login</a>
+            <a href="register.html" class="button" id="register-button">Register</a>
+            <a href="#" class="button" id="logout-button" style="display: none;" onclick="logout()">Logout</a>
             <a href="products.html" class="button">Products</a>
             <a href="shoppingcart.html" class="button">Shopping cart</a>
         </div>
 
+
     </div>
 </header>
 
-<div class="cards-container">
-    <div class="card">
-        <div class="card-overlay"></div>
-        <div class="card-inner">
-            <div class="title">Filters</div>
-            <div class="section-title">Flowers</div>
-            <label class="radio-button">
-                <input value="option1" name="category1" type="radio">
-                <span class="radio"></span>
-                zambile
-            </label>
-            <label class="radio-button">
-                <input value="option2" name="category1" type="radio">
-                <span class="radio"></span>
-                narcise
-            </label>
-            <label class="radio-button">
-                <input value="option3" name="category1" type="radio">
-                <span class="radio"></span>
-                lalele
-            </label>
-            <label class="radio-button">
-                <input value="option4" name="category1" type="radio">
-                <span class="radio"></span>
-                orhidee
-            </label>
-            <label class="radio-button">
-                <input value="option5" name="category1" type="radio">
-                <span class="radio"></span>
-                trandafiri
-            </label>
-            <label class="radio-button">
-                <input value="option6" name="category1" type="radio">
-                <span class="radio"></span>
-                Iris
-            </label>
-            <div class="second-section">Price</div>
-            <label class="radio-button">
-                <input value="option1" name="category2" type="radio">
-                <span class="radio"></span>
-                <300 ron
-            </label>
-            <label class="radio-button">
-                <input value="option2" name="category2" type="radio">
-                <span class="radio"></span>
-                300-500 ron
-            </label>
-            <label class="radio-button">
-                <input value="option3" name="category2" type="radio">
-                <span class="radio"></span>
-                >500 ron
-            </label>
-            <div class="second-section">Order</div>
-            <label class="radio-button">
-                <input value="option1" name="category3" type="radio">
-                <span class="radio"></span>
-                Most ordered
-            </label>
-            <label class="radio-button">
-                <input value="option2" name="category3" type="radio">
-                <span class="radio"></span>
-                Show all
-            </label>
-            <button id="Card-button">Apply filters</button>
+    <div class="cards-container">
+        <div class="card">
+            <div class="card-overlay"></div>
+            <div class="card-inner">
+                <div class="title">Filters</div>
+                <div class="section-title">Flowers</div>
+                <label class="radio-button">
+                    <input value="option1" name="category1" type="radio">
+                    <span class="radio"></span>
+                    zambile
+                </label>
+                <label class="radio-button">
+                    <input value="option2" name="category1" type="radio">
+                    <span class="radio"></span>
+                    narcise
+                </label>
+                <label class="radio-button">
+                    <input value="option3" name="category1" type="radio">
+                    <span class="radio"></span>
+                    lalele
+                </label>
+                <label class="radio-button">
+                    <input value="option4" name="category1" type="radio">
+                    <span class="radio"></span>
+                    orhidee
+                </label>
+                <label class="radio-button">
+                    <input value="option5" name="category1" type="radio">
+                    <span class="radio"></span>
+                    trandafiri
+                </label>
+                <label class="radio-button">
+                    <input value="option6" name="category1" type="radio">
+                    <span class="radio"></span>
+                    Iris
+                </label>
+                <div class="second-section">Price</div>
+                <label class="radio-button">
+                    <input value="option1" name="category2" type="radio">
+                    <span class="radio"></span>
+                    <300 ron
+                </label>
+                <label class="radio-button">
+                    <input value="option2" name="category2" type="radio">
+                    <span class="radio"></span>
+                    300-500 ron
+                </label>
+                <label class="radio-button">
+                    <input value="option3" name="category2" type="radio">
+                    <span class="radio"></span>
+                    >500 ron
+                </label>
+                <div class="second-section">Order</div>
+                <label class="radio-button">
+                    <input value="option1" name="category3" type="radio">
+                    <span class="radio"></span>
+                    Most ordered
+                </label>
+                <label class="radio-button">
+                    <input value="option2" name="category3" type="radio">
+                    <span class="radio"></span>
+                    Show all
+                </label>
+                <button id="Card-button">Apply filters</button>
+            </div>
         </div>
+
+        <div class="card2">
+            <div class="image">
+                <img src="../../static/img/lalele.jpg">
+            </div>
+            <span class="title">Lalele</span>
+            <span class="price">100 ron</span>
+            <div class="add-to-cart" onclick="addToCart(this.parentElement)">Add to Cart</div>
+        </div>
+
+        <div class="card2">
+            <div class="image">
+                <img src="../../static/img/trandafiri.jpg">
+            </div>
+            <span class="title">Trandafiri</span>
+            <span class="price">200 ron</span>
+            <div class="add-to-cart" onclick="addToCart(this.parentElement)">Add to Cart</div>
+        </div>
+
+        <div class="card2">
+            <div class="image">
+                <img src="../../static/img/irrigation.jpg">
+            </div>
+            <span class="title">Irrigation System</span>
+            <span class="price">650 ron</span>
+            <div class="add-to-cart" onclick="addToCart(this.parentElement)">Add to Cart</div>
+        </div>
+
     </div>
 
-    <div class="card2">
-        <div class="image">
-            <img src="../../static/img/lalele.jpg">
-        </div>
-        <span class="title">Lalele</span>
-        <span class="price">100 ron</span>
-    </div>
+    <script>
+        window.onload = function() {
+            var loggedIn = document.cookie.includes('loggedIn=true');
+            if (loggedIn) {
+                document.getElementById('login-button').style.display = 'none';
+                document.getElementById('register-button').style.display = 'none';
+                document.getElementById('logout-button').style.display = 'block';
+            }
 
-    <div class="card2">
-        <div class="image">
-            <img src="../../static/img/trandafiri.jpg">
-        </div>
-        <span class="title">Trandafiri</span>
-        <span class="price">200 ron</span>
-    </div>
+            document.querySelectorAll('.add-to-cart').forEach(function(button) {
+                button.addEventListener('click', function(event) {
+                    addToCart(event.target.parentElement);
+                });
+            });
+        }
 
-    <div class="card2">
-        <div class="image">
-            <img src="../../static/img/crizanteme.jpg">
-        </div>
-        <span class="title">Crizanteme</span>
-        <span class="price">150ron</span>
-    </div>
+        function logout() {
+            document.cookie = "email=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            document.cookie = "password=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            document.cookie = "loggedIn=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            window.location.href = '/TehnologiiWeb---Marcoci-Fabian-Gheras-Vlad/WeGa(WebGardening)/src/views/HTML/index.html';
+        }
 
-</div>
+        function addToCart(card) {
+            if (localStorage.getItem('cart') === null) {
+                localStorage.setItem('cart', JSON.stringify([]));
+            }
+
+            var itemTitle = card.querySelector('.title').innerText;
+            var itemPrice = card.querySelector('.price').innerText;
+            var itemImg = card.querySelector('.image img').src;
+
+            var cart = JSON.parse(localStorage.getItem('cart'));
+            var existingItem = cart.find(item => item.title === itemTitle);
+
+            if (existingItem) {
+                existingItem.count++;
+            } else {
+                var item = {
+                    title: itemTitle,
+                    price: itemPrice,
+                    img: itemImg,
+                    count: 1
+                };
+                cart.push(item);
+            }
+            console.log(item.count);
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            var addToCartDiv = card.querySelector('.add-to-cart');
+            addToCartDiv.textContent = 'Added !';
+        }
+    </script>
 </body>
 </html>
 

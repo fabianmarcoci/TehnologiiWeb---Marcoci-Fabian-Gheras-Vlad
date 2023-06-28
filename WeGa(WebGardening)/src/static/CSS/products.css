@@ -295,13 +295,13 @@ h2 {
     opacity: 1;
 }
 
-.card2::after {
-    content: "Add to Cart";
+.card2 .add-to-cart {
+    z-index: 10;
     padding-top: 1.25em;
     padding-left: 1.25em;
     position: absolute;
     left: 0;
-    bottom: -60px;
+    bottom: 0;
     background:#B5838D;
     color: #fff;
     height: 2.5em;
@@ -331,7 +331,7 @@ h2 {
     color: #000;
 }
 
-.card2:hover::after {
+.card2:hover .add-to-cart {
     bottom: 0;
     opacity: 1;
 }
@@ -340,8 +340,7 @@ h2 {
     transform: scale(0.98);
 }
 
-.card2:active::after {
-    content: "Added !";
+.card2:active .add-to-cart {
     height: 3.125em;
 }
 

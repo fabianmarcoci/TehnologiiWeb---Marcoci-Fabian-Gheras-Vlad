@@ -20,8 +20,9 @@
             <img src="../../static/img/favicon.png" class="plant-logo" alt="Plant Logo">
         </div>
         <div class="header-buttons">
-            <a href="login.html" class="button">Login</a>
-            <a href="register.html" class="button">Register</a>
+            <a href="login.html" class="button" id="login-button">Login</a>
+            <a href="register.html" class="button" id="register-button">Register</a>
+            <a href="#" class="button" id="logout-button" style="display: none;" onclick="logout()">Logout</a>
             <a href="crops.html" class="button">Crops</a>
             <a href=" shoppingcart.html" class="button">Shopping cart</a>
         </div>
@@ -35,7 +36,7 @@
         <div class="card-overlay"></div>
         <div class="card-inner">
             <div class="title">Filters</div>
-            <div class="section-title">Utenils</div>
+            <div class="section-title">Utensils</div>
             <label class="radio-button">
                 <input value="option1" name="category1" type="radio">
                 <span class="radio"></span>
@@ -103,6 +104,7 @@
         </div>
         <span class="title">Irrigation System</span>
         <span class="price">650 ron</span>
+        <div class="add-to-cart" onclick="addToCart(this.parentElement)">Add to Cart</div>
     </div>
 
     <div class="card2">
@@ -111,6 +113,7 @@
         </div>
         <span class="title">Small shovel</span>
         <span class="price">89,99 ron</span>
+        <div class="add-to-cart" onclick="addToCart(this.parentElement)">Add to Cart</div>
     </div>
 
     <div class="card2">
@@ -119,10 +122,58 @@
         </div>
         <span class="title">Solid Rake</span>
         <span class="price">174,99 ron</span>
+        <div class="add-to-cart" onclick="addToCart(this.parentElement)">Add to Cart</div>
     </div>
 
 </div>
-</div>
+
+<script>
+    window.onload = function() {
+        var loggedIn = document.cookie.includes('loggedIn=true');
+        if (loggedIn) {
+            document.getElementById('login-button').style.display = 'none';
+            document.getElementById('register-button').style.display = 'none';
+            document.getElementById('logout-button').style.display = 'block';
+        }
+    }
+
+    function logout() {
+        document.cookie = "email=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        document.cookie = "password=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        document.cookie = "loggedIn=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        window.location.href = '/TehnologiiWeb---Marcoci-Fabian-Gheras-Vlad/WeGa(WebGardening)/src/views/HTML/index.html';
+    }
+
+    function addToCart(card) {
+        if (localStorage.getItem('cart') === null) {
+            localStorage.setItem('cart', JSON.stringify([]));
+        }
+
+        var itemTitle = card.querySelector('.title').innerText;
+        var itemPrice = card.querySelector('.price').innerText;
+        var itemImg = card.querySelector('.image img').src;
+
+        var cart = JSON.parse(localStorage.getItem('cart'));
+        var existingItem = cart.find(item => item.title === itemTitle);
+
+        if (existingItem) {
+            existingItem.count++;
+        } else {
+            var item = {
+                title: itemTitle,
+                price: itemPrice,
+                img: itemImg,
+                count: 1
+            };
+            cart.push(item);
+        }
+        console.log(item.count);
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        var addToCartDiv = card.querySelector('.add-to-cart');
+        addToCartDiv.textContent = 'Added !';
+    }
+</script>
 </body>
 </html>
 
