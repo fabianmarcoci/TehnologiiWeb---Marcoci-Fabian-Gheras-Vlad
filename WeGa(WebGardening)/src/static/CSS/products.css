@@ -106,54 +106,6 @@ h2 {
     gap: 15px;
 }
 
-#login-button,
-#logout-button,
-#register-button,
-#contact-button,
-#Crops-button,
-#Products-button,
-#Cart-button{
-    padding: 17px 40px;
-    border-radius: 50px;
-    border: 0;
-    background-color: white;
-    box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    font-size: 15px;
-    transition: all 0.5s ease;
-    color: #B5838D;
-}
-
-#login-button:hover,
-#logout-button:hover,
-#register-button:hover,
-#contact-button:hover,
-#Crops-button:hover,
-#Products-button:hover,
-#Cart-button:hover{
-    letter-spacing: 3px;
-    background-color: #B5838D;
-    color: hsl(0, 0%, 100%);
-    box-shadow: #B5838D 0px 7px 29px 0px;
-    border: 3px solid white;
-}
-
-#login-button:active,
-#logout-button:active,
-#register-button:active,
-#contact-button:active,
-#Crops-button:active,
-#Products-button:active,
-#Cart-button:active{
-    letter-spacing: 3px;
-    background-color: #B5838D;
-    color: hsl(0, 0%, 100%);
-    box-shadow: #B5838D 0px 0px 0px 0px;
-    transform: translateY(10px);
-    transition: 100ms;
-}
-
 
 .input {
     width: 150px;
