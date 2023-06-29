@@ -6,6 +6,7 @@ const path = require('path');
 const url = require('url');
 const root = path.resolve(__dirname, '../../../');
 const cartController = require('../controller/cart.controller');
+const cartItemsController = require('../controller/cartItems.controller');
 
 const server = http.createServer((req, res) => {
     const parsedUrl = url.parse(req.url);
@@ -36,6 +37,19 @@ const server = http.createServer((req, res) => {
             const email = parsedUrl.searchParams.get('email');
             console.log("Received request for /api/cart with email:", email);
             cartController.handleShoppingCartRequest(req, res, email);
+        } else if (pathname.endsWith('.json')) {
+            let relativePath = pathname.slice('/TehnologiiWeb---Marcoci-Fabian-Gheras-Vlad/WeGa(WebGardening)/'.length);
+            let fullPath = path.join(root, relativePath);
+            fs.readFile(fullPath, (err, data) => {
+                if (err) {
+                    console.log('Error reading JSON file:', err);
+                    res.writeHead(500);
+                    res.end('500 Internal Server Error');
+                } else {
+                    res.writeHead(200, {'Content-Type': 'application/json'});
+                    res.end(data);
+                }
+            });
         } else if (pathname.endsWith('.css')) {
             let relativePath = pathname.slice('/TehnologiiWeb---Marcoci-Fabian-Gheras-Vlad/WeGa(WebGardening)/'.length);
             let fullPath = path.join(root, relativePath);
@@ -93,6 +107,8 @@ const server = http.createServer((req, res) => {
             userController.handleRegisterPostRequest(req, res);
         } else if (pathname === '/login') {
             userController.handleLoginPostRequest(req, res);
+        } else if (pathname.startsWith('/api/cart')) {
+            cartItemsController.insertCartItemsPostRequest(req, res);
         } else {
             res.end('Invalid request URL.');
         }
