@@ -105,6 +105,7 @@ h2 {
     justify-content: center;
     padding: 5px;
     transition: padding-right 0.3s ease-in-out;
+    gap:10px;
 }
 
 #logout-button,
@@ -369,7 +370,7 @@ button.cta {
 }
 
 .recommended {
-    margin-left: 100px;
+    margin-left: 80px;
 }
 
 
@@ -460,7 +461,8 @@ button.cta {
     justify-content: space-between;
     gap: 20px;
     align-items: flex-start;
-    margin-right: 250px;
+    margin-bottom:15px ;
+
 }
 
 .image img {
@@ -496,6 +498,26 @@ footer {
     background-color: #B5838D;
     color: #fff;
 }
+.search-area{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px;
+}
+
+.container-input {
+    margin-top: 100px;
+    flex: 1; /* Take up remaining horizontal space */
+}
+
+.search-title{
+    flex: 1; /* Distribute space evenly among the titles */
+    margin-right: 10px;
+}
+
+
+
 @media (max-width: 1200px) {
     .header-buttons {
         justify-content: center; /* Center the buttons */
@@ -588,6 +610,50 @@ footer {
     .button {
         padding: 3px 15px;
         font-size: 10px;
+    }
+
+    .search-title{
+        font-size:18px;
+        flex-basis: 100%; /* Take up full width in smaller screens */
+        margin-right: 0; /* Remove the right margin */
+        margin-left:10px ;
+        margin-bottom: 5px; /* Add spacing between the titles */
+
+    }
+
+
+    .input {
+        width: 130px; /* Adjust the width as needed */
+        padding: 8px 0px 8px 30px; /* Adjust the padding as needed */
+        border-radius: 9999px;
+        border: solid 1px #333;
+        transition: all .2s ease-in-out;
+        outline: none;
+        opacity: 0.8;
+        margin-left: 10px;
+        margin-top: -120px;
+    }
+
+    .container-input svg {
+        position: absolute;
+        top: 30%;
+        left: 20px; /* Adjust the left position as needed */
+        transform: translate(0, -50%);
+        width: 10px; /* Adjust the width as needed */
+        height: 10px; /* Adjust the height as needed */
+    }
+
+    .input:focus {
+        opacity: 1;
+        width: 100px; /* Adjust the width as needed */
+    }
+    .search-area {
+        flex-wrap: wrap;
+    }
+
+    h2.recommended {
+        margin-left: 10px;
+        width: 90%;
     }
 }
 

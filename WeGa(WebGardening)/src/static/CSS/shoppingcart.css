@@ -70,9 +70,6 @@ h1 {
     letter-spacing: 1px;
 }
 
-.button {
-    text-decoration: none;
-}
 
 .button:hover {
     letter-spacing: 3px;
@@ -95,18 +92,11 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 8px 20px;
+    padding: 5px;
     transition: padding-right 0.3s ease-in-out;
     gap: 15px;
 }
-
-#login-button,
-#logout-button,
-#register-button,
-#contact-button,
-#Crops-button,
-#Products-button,
-#Cart-button{
+    .button{
     padding: 17px 40px;
     border-radius: 50px;
     border: 0;
@@ -117,36 +107,10 @@ h1 {
     font-size: 15px;
     transition: all 0.5s ease;
     color: #B5838D;
+    text-decoration: none;
 }
 
-#login-button:hover,
-#logout-button:hover,
-#register-button:hover,
-#contact-button:hover,
-#Crops-button:hover,
-#Products-button:hover,
-#Cart-button:hover{
-    letter-spacing: 3px;
-    background-color: #B5838D;
-    color: hsl(0, 0%, 100%);
-    box-shadow: #B5838D 0px 7px 29px 0px;
-    border: 3px solid white;
-}
 
-#login-button:active,
-#logout-button:active,
-#register-button:active,
-#contact-button:active,
-#Crops-button:active,
-#Products-button:active,
-#Cart-button:active{
-    letter-spacing: 3px;
-    background-color: #B5838D;
-    color: hsl(0, 0%, 100%);
-    box-shadow: #B5838D 0px 0px 0px 0px;
-    transform: translateY(10px);
-    transition: 100ms;
-}
 
 .container-input {
     position: relative;
@@ -164,27 +128,7 @@ h1 {
     margin-top: 100px;
 }
 
-.input {
-    width: 150px;
-    padding: 10px 0px 10px 40px;
-    border-radius: 9999px;
-    border: solid 1px #333;
-    transition: all .2s ease-in-out;
-    outline: none;
-    opacity: 0.8;
-}
 
-.container-input svg {
-    position: absolute;
-    top: 50%;
-    left: 10px;
-    transform: translate(0, -50%);
-}
-
-.input:focus {
-    opacity: 1;
-    width: 250px;
-}
 
 .clearfix::after {
     content: "";
@@ -192,47 +136,21 @@ h1 {
     display: table;
 }
 
-@media screen and (max-width: 1200px) {
-    /* Styles for screens up to 1200px wide */
+@media (max-width: 1200px) {
     .header-buttons {
         justify-content: center; /* Center the buttons */
         margin: 0; /* Remove the right margin */
     }
-
     .button {
-        padding: 7px 20px;
+        padding: 7px 30px;
         font-size: 10px;
     }
 
-    #login-button,
-    #register-button {
-        padding: 7px 20px;
-        font-size: 10px;
-    }
 
-    .search-title {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        vertical-align: bottom;
-        justify-content: flex-end;
-        font-size: 10px;
-        transition: font-size 0.3s ease-in-out;
-    }
-
-    .result-title {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        vertical-align: bottom;
-        justify-content: flex-end;
-        font-size: 10px;
-        transition: font-size 0.3s ease-in-out;
-    }
 }
 
+
 @media only screen and (max-width: 768px) {
-    /* Styles for screens up to 768px wide */
     .logo {
         margin-left: 2%;
         transition: margin-left 0.3s ease-in-out;
@@ -243,22 +161,29 @@ h1 {
         transition: padding-right 0.3s ease-in-out;
     }
 
-    #login-button,
-    #register-button,
-    #Products-button{
-        padding: 5px 15px;
-        font-size: 10px;
-    }
-
-    #Crops-button {
+    #login-button {
         font-size: 10px;
         transition: font-size 0.3s ease-in-out;
     }
 
-    #Cart-button {
+    #register-button {
         font-size: 10px;
         transition: font-size 0.3s ease-in-out;
     }
+
+    #Crops-button{
+        font-size: 10px;
+        transition: font-size 0.3s ease-in-out;
+    }
+    #Products-button {
+        font-size: 10px;
+        transition: font-size 0.3s ease-in-out;
+    }
+    #Cart-button{
+        font-size: 10px;
+        transition: font-size 0.3s ease-in-out;
+    }
+
 
     .header-title {
         width: 100%;
@@ -294,34 +219,59 @@ h1 {
         margin-bottom: -70px;
     }
 
-    .search-title {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        vertical-align: bottom;
-        justify-content: flex-end;
-        font-size: 10px;
-        transition: font-size 0.3s ease-in-out;
-    }
-
-    .result-title {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        vertical-align: bottom;
-        justify-content: flex-end;
-        font-size: 10px;
-        transition: font-size 0.3s ease-in-out;
-    }
 
     .header-buttons {
-        justify-content: center; /* Center the buttons */
-        margin: 0; /* Remove the margin */
+        justify-content: center;
+        margin: 0;
     }
 
     .button {
-        padding: 5px 15px;
+        padding: 3px 15px;
         font-size: 10px;
+    }
+
+    .search-title{
+        font-size:18px;
+        flex-basis: 100%; /* Take up full width in smaller screens */
+        margin-right: 0; /* Remove the right margin */
+        margin-left:10px ;
+        margin-bottom: 5px; /* Add spacing between the titles */
+
+    }
+
+
+    .input {
+        width: 130px; /* Adjust the width as needed */
+        padding: 8px 0px 8px 30px; /* Adjust the padding as needed */
+        border-radius: 9999px;
+        border: solid 1px #333;
+        transition: all .2s ease-in-out;
+        outline: none;
+        opacity: 0.8;
+        margin-left: 10px;
+        margin-top: -120px;
+    }
+
+    .container-input svg {
+        position: absolute;
+        top: 30%;
+        left: 20px; /* Adjust the left position as needed */
+        transform: translate(0, -50%);
+        width: 10px; /* Adjust the width as needed */
+        height: 10px; /* Adjust the height as needed */
+    }
+
+    .input:focus {
+        opacity: 1;
+        width: 100px; /* Adjust the width as needed */
+    }
+    .search-area {
+        flex-wrap: wrap;
+    }
+
+    h2.recommended {
+        margin-left: 10px;
+        width: 90%;
     }
 
     h1 {
@@ -334,5 +284,4 @@ h1 {
         /* Adjust font size for smaller screens */
         font-size: 14px;
 
-    }
-}
+    }}

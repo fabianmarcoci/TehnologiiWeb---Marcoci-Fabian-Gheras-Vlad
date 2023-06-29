@@ -27,26 +27,6 @@ h2 {
     top: 0px;
     color: #B5838D;
     border-bottom: 2px solid #B5838D;
-    margin-left: 30px;
-    width: 90%;
-}
-
-
-h2.recommended{
-    position: relative;
-    top: 0px;
-    color: #B5838D;
-    border-bottom: 2px solid #B5838D;
-    margin-left: 70px;
-    width: 90%;
-}
-
-h2.result-title{
-    position: relative;
-    top: 0px;
-    color: #B5838D;
-    border-bottom: 2px solid #B5838D;
-    margin-left: 70px;
     width: 90%;
 }
 
@@ -98,7 +78,7 @@ h2.result-title{
     font-size: 15px;
     transition: all 0.5s ease;
     color: #B5838D;
-    text-decoration: none; /* Remove underline */
+    text-decoration: none;
 }
 
 .button:hover {
@@ -125,11 +105,10 @@ h2.result-title{
     justify-content: center;
     padding: 5px;
     transition: padding-right 0.3s ease-in-out;
-    gap:15px;
+    gap:10px;
 }
 
-
-#login-button,
+#logout-button,
 #register-button,
 #contact-button,
 #Crops-button,
@@ -147,7 +126,7 @@ h2.result-title{
     color: #B5838D;
 }
 
-#login-button:hover,
+#logon-button:hover,
 #register-button:hover,
 #contact-button:hover,
 #Crops-button:hover,
@@ -160,7 +139,7 @@ h2.result-title{
     border: 3px solid white;
 }
 
-#login-button:active,
+#logout-button:active,
 #register-button:active,
 #contact-button:active,
 #Crops-button:active,
@@ -278,7 +257,6 @@ h2.result-title{
     transition: all .2s ease-in-out;
     outline: none;
     opacity: 0.8;
-    margin-left: 730px;
 }
 
 .container-input svg {
@@ -286,7 +264,6 @@ h2.result-title{
     top: 50%;
     left: 10px;
     transform: translate(0, -50%);
-    margin-left: 740px;
 }
 
 .input:focus {
@@ -294,21 +271,11 @@ h2.result-title{
     width: 250px;
 }
 
-.search-title1 {
-    position: absolute;
+.search-title {
     display: inline-block;
     vertical-align: middle;
     margin-right: 20px;
     margin-left: 100px;
-    margin-top:670px ;
-}
-.search-title2 {
-    position: absolute;
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 20px;
-    margin-left: 100px;
-    margin-top:1230px ;
 }
 
 button.cta {
@@ -403,7 +370,7 @@ button.cta {
 }
 
 .recommended {
-    margin-left: 100px;
+    margin-left: 80px;
 }
 
 
@@ -477,7 +444,6 @@ button.cta {
 .card2:active .add-to-cart {
     height: 3.125em;
 }
-
 .text {
     max-width: 55px;
 }
@@ -495,6 +461,7 @@ button.cta {
     justify-content: space-between;
     gap: 20px;
     align-items: flex-start;
+    margin-bottom:15px ;
 
 }
 
@@ -531,6 +498,26 @@ footer {
     background-color: #B5838D;
     color: #fff;
 }
+.search-area{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 40px;
+}
+
+.container-input {
+    margin-top: 100px;
+    flex: 1; /* Take up remaining horizontal space */
+}
+
+.search-title{
+    flex: 1; /* Distribute space evenly among the titles */
+    margin-right: 10px;
+}
+
+
+
 @media (max-width: 1200px) {
     .header-buttons {
         justify-content: center; /* Center the buttons */
@@ -541,25 +528,6 @@ footer {
         font-size: 10px;
     }
 
-    .search-title{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        vertical-align: bottom;
-        justify-content: flex-end;
-        font-size: 10px;
-        transition: font-size 0.3s ease-in-out;
-    }
-
-    .result-title{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        vertical-align: bottom;
-        justify-content: flex-end;
-        font-size: 10px;
-        transition: font-size 0.3s ease-in-out;
-    }
 
 }
 
@@ -633,86 +601,61 @@ footer {
         margin-bottom: -70px;
     }
 
-    .search-title1 {
-        position: absolute;
-        left: 10px;
-        top: 50%;
-        margin-left: 40px;
-        display: flex;
-        align-items: center;
-        font-size: 14px;
-        margin-top: 420px;
-        flex-wrap: wrap;/
-    }
-
-    .search-title2 {
-        position: absolute;
-        left: 10px;
-        top: 50%;
-        margin-left: 40px;
-        display: flex;
-        align-items: center;
-        font-size: 14px;
-        margin-top: 1310px;
-        white-space: nowrap; /* Prevent text from wrapping */
-    }
-
-    .result-title{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        vertical-align: bottom;
-        justify-content: flex-end;
-        font-size: 10px;
-        transition: font-size 0.3s ease-in-out;
-    }
-
-
 
     .header-buttons {
-        justify-content: center; /* Center the buttons */
-        margin: 0; /* Remove the margin */
+        justify-content: center;
+        margin: 0;
     }
 
     .button {
-        padding: 5px 15px;
+        padding: 3px 15px;
         font-size: 10px;
     }
-    h2.recommended {
-        margin-left: 10px;
-        width: 90%;
+
+    .search-title{
+        font-size:18px;
+        flex-basis: 100%; /* Take up full width in smaller screens */
+        margin-right: 0; /* Remove the right margin */
+        margin-left:10px ;
+        margin-bottom: 5px; /* Add spacing between the titles */
+
     }
 
-    h2.result-title {
-        margin-left: 10px;
-        width: 90%;
-    }
 
     .input {
-        width: 80px; /* Adjust the width as needed */
+        width: 130px; /* Adjust the width as needed */
         padding: 8px 0px 8px 30px; /* Adjust the padding as needed */
         border-radius: 9999px;
         border: solid 1px #333;
         transition: all .2s ease-in-out;
         outline: none;
         opacity: 0.8;
-        margin-top: -10px;
-        margin-left: 300px;
+        margin-left: 10px;
+        margin-top: -120px;
     }
 
     .container-input svg {
         position: absolute;
-        top: 50%;
-        left: 270px; /* Adjust the left position as needed */
+        top: 30%;
+        left: 20px; /* Adjust the left position as needed */
         transform: translate(0, -50%);
         width: 10px; /* Adjust the width as needed */
         height: 10px; /* Adjust the height as needed */
-        margin-left:40px;
     }
 
     .input:focus {
         opacity: 1;
         width: 100px; /* Adjust the width as needed */
     }
+    .search-area {
+        flex-wrap: wrap;
+    }
 
+    h2.recommended {
+        margin-left: 10px;
+        width: 90%;
+    }
 }
+
+
+
