@@ -29,7 +29,22 @@ const getAllProducts = async () => {
     return res.rows;
 };
 
+async function findProductByName(name) {
+    const query = 'SELECT * FROM products WHERE name = $1';
+    const values = [name];
+
+    try {
+        const { rows } = await pool.query(query, values);
+        return rows[0];
+    } catch (err) {
+        console.log(err);
+        throw err;
+    }
+}
+
+
 module.exports = {
     insertProduct,
-    getAllProducts
+    getAllProducts,
+    findProductByName
 }

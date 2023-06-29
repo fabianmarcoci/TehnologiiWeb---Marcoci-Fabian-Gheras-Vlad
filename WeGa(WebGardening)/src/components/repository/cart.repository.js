@@ -12,6 +12,19 @@ async function getCartByUserId(userId) {
     }
 }
 
+async function createCart(userId) {
+    const query = `INSERT INTO carts (user_id) VALUES ($1) RETURNING *`;
+    const values = [userId];
+
+    try {
+        const { rows } = await db.query(query, values);
+        return rows[0];
+    } catch (err) {
+        console.log(err);
+        throw err;
+    }
+}
 module.exports = {
     getCartByUserId,
+    createCart
 };

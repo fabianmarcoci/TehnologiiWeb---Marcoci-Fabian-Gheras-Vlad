@@ -126,39 +126,43 @@
             }
 
             var addToCartButton = card.querySelector('.add-to-cart');
-
             addToCartButton.classList.add("disabled");
             addToCartButton.textContent = "Added !";
-
-            if (localStorage.getItem('cart') === null) {
-                localStorage.setItem('cart', JSON.stringify([]));
-            }
 
             var itemTitle = card.querySelector('.title').innerText;
             var itemPrice = card.querySelector('.price').innerText;
             var itemImg = card.querySelector('.image img').src;
 
-            var cart = JSON.parse(localStorage.getItem('cart'));
-            var existingItem = cart.find(item => item.title === itemTitle);
+            var item = {
+                title: itemTitle,
+                price: itemPrice,
+                img: itemImg,
+                count: 1
+            };
 
-            if (existingItem) {
-                existingItem.count++;
-            } else {
-                var item = {
-                    title: itemTitle,
-                    price: itemPrice,
-                    img: itemImg,
-                    count: 1
-                };
-                cart.push(item);
-            }
+            var email = document.cookie.split('; ').find(row => row.startsWith('email=')).split('=')[1];
 
-            localStorage.setItem('cart', JSON.stringify(cart));
-
-            setTimeout(function() {
-                addToCartButton.classList.remove("disabled");
-                addToCartButton.textContent = "Add to Cart";
-            }, 2000);
+            fetch('/api/cart', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: email,
+                    item: item
+                })
+            }).then(response => {
+                if (response.ok) {
+                    setTimeout(function() {
+                        addToCartButton.classList.remove("disabled");
+                        addToCartButton.textContent = "Add to Cart";
+                    }, 2000);
+                } else {
+                    throw new Error('Error adding item to cart');
+                }
+            }).catch(error => {
+                console.error('An error occurred:', error);
+            });
         }
     </script>
 </body>
