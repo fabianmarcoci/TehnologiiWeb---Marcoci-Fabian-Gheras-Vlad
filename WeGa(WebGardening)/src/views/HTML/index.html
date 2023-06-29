@@ -156,33 +156,11 @@
 
     <script>
         function addToCart(card) {
-            if (localStorage.getItem('cart') === null) {
-                localStorage.setItem('cart', JSON.stringify([]));
+            var loggedIn = document.cookie.includes('loggedIn=true');
+            if (!loggedIn) {
+                alert("Please log in to add items to the cart.");
+                return;
             }
-
-            var itemTitle = card.querySelector('.title').innerText;
-            var itemPrice = card.querySelector('.price').innerText;
-            var itemImg = card.querySelector('.image img').src;
-
-            var cart = JSON.parse(localStorage.getItem('cart'));
-            var existingItem = cart.find(item => item.title === itemTitle);
-
-            if (existingItem) {
-                existingItem.count++;
-            } else {
-                var item = {
-                    title: itemTitle,
-                    price: itemPrice,
-                    img: itemImg,
-                    count: 1
-                };
-                cart.push(item);
-            }
-            console.log(item.count);
-            localStorage.setItem('cart', JSON.stringify(cart));
-
-            var addToCartDiv = card.querySelector('.add-to-cart');
-            addToCartDiv.textContent = 'Added !';
         }
     </script>
 </body>
