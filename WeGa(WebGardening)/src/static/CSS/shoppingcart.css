@@ -93,6 +93,8 @@ h1 {
 
 .header-buttons {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     padding: 8px 20px;
     transition: padding-right 0.3s ease-in-out;
     gap: 15px;
@@ -190,15 +192,147 @@ h1 {
     display: table;
 }
 
-@media only screen and (max-width: 768px) {
-    #logout-button,
-    #register-button,
-    #contact-button,
-    #Crops-button,
-    #Products-button,
-    #Cart-button {
-        padding: 8px 20px;
+@media screen and (max-width: 1200px) {
+    /* Styles for screens up to 1200px wide */
+    .header-buttons {
+        justify-content: center; /* Center the buttons */
+        margin: 0; /* Remove the right margin */
+    }
+
+    .button {
+        padding: 7px 20px;
+        font-size: 10px;
+    }
+
+    #login-button,
+    #register-button {
+        padding: 7px 20px;
+        font-size: 10px;
+    }
+
+    .search-title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        vertical-align: bottom;
+        justify-content: flex-end;
         font-size: 10px;
         transition: font-size 0.3s ease-in-out;
+    }
+
+    .result-title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        vertical-align: bottom;
+        justify-content: flex-end;
+        font-size: 10px;
+        transition: font-size 0.3s ease-in-out;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    /* Styles for screens up to 768px wide */
+    .logo {
+        margin-left: 2%;
+        transition: margin-left 0.3s ease-in-out;
+    }
+
+    .header-buttons {
+        padding: 5px 5px;
+        transition: padding-right 0.3s ease-in-out;
+    }
+
+    #login-button,
+    #register-button,
+    #Products-button{
+        padding: 5px 15px;
+        font-size: 10px;
+    }
+
+    #Crops-button {
+        font-size: 10px;
+        transition: font-size 0.3s ease-in-out;
+    }
+
+    #Cart-button {
+        font-size: 10px;
+        transition: font-size 0.3s ease-in-out;
+    }
+
+    .header-title {
+        width: 100%;
+        transition: width 0.3s ease-in-out;
+    }
+
+    .title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        vertical-align: bottom;
+        justify-content: flex-end;
+        font-size: 40px;
+        transition: font-size 0.3s ease-in-out;
+    }
+
+    .title .first-word {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .title .first-letter {
+        font-size: 55px;
+        transition: font-size 0.3s ease-in-out;
+    }
+
+    .city {
+        display: flex;
+        align-items: start;
+        justify-content: center;
+        font-size: 45px;
+        transition: font-size 0.3s ease-in-out;
+        margin-bottom: -70px;
+    }
+
+    .search-title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        vertical-align: bottom;
+        justify-content: flex-end;
+        font-size: 10px;
+        transition: font-size 0.3s ease-in-out;
+    }
+
+    .result-title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        vertical-align: bottom;
+        justify-content: flex-end;
+        font-size: 10px;
+        transition: font-size 0.3s ease-in-out;
+    }
+
+    .header-buttons {
+        justify-content: center; /* Center the buttons */
+        margin: 0; /* Remove the margin */
+    }
+
+    .button {
+        padding: 5px 15px;
+        font-size: 10px;
+    }
+
+    h1 {
+        /* Adjust font size for smaller screens */
+        font-size: 12px;
+    }
+
+    h2 {
+
+        /* Adjust font size for smaller screens */
+        font-size: 14px;
+
     }
 }

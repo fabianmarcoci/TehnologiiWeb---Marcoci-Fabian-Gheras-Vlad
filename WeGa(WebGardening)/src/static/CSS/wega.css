@@ -27,6 +27,26 @@ h2 {
     top: 0px;
     color: #B5838D;
     border-bottom: 2px solid #B5838D;
+    margin-left: 30px;
+    width: 90%;
+}
+
+
+h2.recommended{
+    position: relative;
+    top: 0px;
+    color: #B5838D;
+    border-bottom: 2px solid #B5838D;
+    margin-left: 70px;
+    width: 90%;
+}
+
+h2.result-title{
+    position: relative;
+    top: 0px;
+    color: #B5838D;
+    border-bottom: 2px solid #B5838D;
+    margin-left: 70px;
     width: 90%;
 }
 
@@ -105,6 +125,7 @@ h2 {
     justify-content: center;
     padding: 5px;
     transition: padding-right 0.3s ease-in-out;
+    gap:15px;
 }
 
 
@@ -257,6 +278,7 @@ h2 {
     transition: all .2s ease-in-out;
     outline: none;
     opacity: 0.8;
+    margin-left: 730px;
 }
 
 .container-input svg {
@@ -264,6 +286,7 @@ h2 {
     top: 50%;
     left: 10px;
     transform: translate(0, -50%);
+    margin-left: 740px;
 }
 
 .input:focus {
@@ -271,11 +294,21 @@ h2 {
     width: 250px;
 }
 
-.search-title {
+.search-title1 {
+    position: absolute;
     display: inline-block;
     vertical-align: middle;
     margin-right: 20px;
     margin-left: 100px;
+    margin-top:670px ;
+}
+.search-title2 {
+    position: absolute;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 20px;
+    margin-left: 100px;
+    margin-top:1230px ;
 }
 
 button.cta {
@@ -462,7 +495,7 @@ button.cta {
     justify-content: space-between;
     gap: 20px;
     align-items: flex-start;
-    margin-right: 250px;
+
 }
 
 .image img {
@@ -527,6 +560,7 @@ footer {
         font-size: 10px;
         transition: font-size 0.3s ease-in-out;
     }
+
 }
 
 
@@ -599,14 +633,28 @@ footer {
         margin-bottom: -70px;
     }
 
-    .search-title{
+    .search-title1 {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        margin-left: 40px;
         display: flex;
-        flex-direction: column;
         align-items: center;
-        vertical-align: bottom;
-        justify-content: flex-end;
-        font-size: 10px;
-        transition: font-size 0.3s ease-in-out;
+        font-size: 14px;
+        margin-top: 420px;
+        flex-wrap: wrap;/
+    }
+
+    .search-title2 {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        margin-left: 40px;
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        margin-top: 1310px;
+        white-space: nowrap; /* Prevent text from wrapping */
     }
 
     .result-title{
@@ -630,7 +678,41 @@ footer {
         padding: 5px 15px;
         font-size: 10px;
     }
+    h2.recommended {
+        margin-left: 10px;
+        width: 90%;
+    }
+
+    h2.result-title {
+        margin-left: 10px;
+        width: 90%;
+    }
+
+    .input {
+        width: 80px; /* Adjust the width as needed */
+        padding: 8px 0px 8px 30px; /* Adjust the padding as needed */
+        border-radius: 9999px;
+        border: solid 1px #333;
+        transition: all .2s ease-in-out;
+        outline: none;
+        opacity: 0.8;
+        margin-top: -10px;
+        margin-left: 300px;
+    }
+
+    .container-input svg {
+        position: absolute;
+        top: 50%;
+        left: 270px; /* Adjust the left position as needed */
+        transform: translate(0, -50%);
+        width: 10px; /* Adjust the width as needed */
+        height: 10px; /* Adjust the height as needed */
+        margin-left:40px;
+    }
+
+    .input:focus {
+        opacity: 1;
+        width: 100px; /* Adjust the width as needed */
+    }
+
 }
-
-
-

@@ -359,10 +359,12 @@ h2 {
 
 .cards-container {
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
     gap: 20px;
-    align-items: stretch;
+    align-items: flex-start;
+    margin-top: 150px;
+
 }
 
 .image img {
@@ -386,28 +388,184 @@ h2 {
     padding-bottom: 3.4em;
 }
 
+.header-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 5px;
+    transition: padding-right 0.3s ease-in-out;
 
-@media only screen and (max-width: 768px) {
-    #logout-button,
-    #register-button,
-    #contact-button,
-    #Crops-button,
-    #Products-button,
-    #Cart-button {
-        padding: 8px 20px;
+}
+.c-input {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 140px;
+    margin-left: 100px;
+    z-index: 1;
+}
+
+.input {
+    width: 150px;
+    padding: 10px 0px 10px 40px;
+    border-radius: 9999px;
+    border: solid 1px #333;
+    transition: all .2s ease-in-out;
+    outline: none;
+    opacity: 0.8;
+}
+
+.c-input svg {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translate(0, -50%);
+}
+
+.input:focus {
+    opacity: 1;
+    width: 250px;
+}
+
+.search-title {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 20px;
+    margin-left: 100px;
+}
+
+
+@media screen and (max-width: 1200px) {
+    /* Styles for screens up to 1200px wide */
+    .header-buttons {
+        justify-content: center; /* Center the buttons */
+        margin: 0; /* Remove the right margin */
+    }
+
+    .button {
+        padding: 7px 20px;
+        font-size: 10px;
+    }
+
+    #login-button,
+    #register-button {
+        padding: 7px 20px;
+        font-size: 10px;
+    }
+
+    .search-title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        vertical-align: bottom;
+        justify-content: flex-end;
         font-size: 10px;
         transition: font-size 0.3s ease-in-out;
     }
 
-    .Box {
-        text-align: center;
+    .result-title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        vertical-align: bottom;
+        justify-content: flex-end;
+        font-size: 10px;
+        transition: font-size 0.3s ease-in-out;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    /* Styles for screens up to 768px wide */
+    .logo {
+        margin-left: 2%;
+        transition: margin-left 0.3s ease-in-out;
     }
 
-    .Register-Form input {
-        width: 100%;
+    .header-buttons {
+        padding: 5px 5px;
+        transition: padding-right 0.3s ease-in-out;
     }
 
-    .Box button {
+    #login-button,
+    #register-button {
+        padding: 5px 15px;
+        font-size: 10px;
+    }
+
+    #Crops-button {
+        font-size: 10px;
+        transition: font-size 0.3s ease-in-out;
+    }
+    #Products-button {
+        font-size: 10px;
+        transition: font-size 0.3s ease-in-out;
+    }
+    #Cart-button {
+        font-size: 10px;
+        transition: font-size 0.3s ease-in-out;
+    }
+
+    .header-title {
         width: 100%;
+        transition: width 0.3s ease-in-out;
+    }
+
+    .title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        vertical-align: bottom;
+        justify-content: flex-end;
+        font-size: 40px;
+        transition: font-size 0.3s ease-in-out;
+    }
+
+    .title .first-word {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .title .first-letter {
+        font-size: 55px;
+        transition: font-size 0.3s ease-in-out;
+    }
+
+    .city {
+        display: flex;
+        align-items: start;
+        justify-content: center;
+        font-size: 45px;
+        transition: font-size 0.3s ease-in-out;
+        margin-bottom: -70px;
+    }
+
+    .search-title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        vertical-align: bottom;
+        justify-content: flex-end;
+        font-size: 10px;
+        transition: font-size 0.3s ease-in-out;
+    }
+
+    .result-title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        vertical-align: bottom;
+        justify-content: flex-end;
+        font-size: 10px;
+        transition: font-size 0.3s ease-in-out;
+    }
+
+    .header-buttons {
+        justify-content: center; /* Center the buttons */
+        margin: 0; /* Remove the margin */
+    }
+
+    .button {
+        padding: 5px 15px;
+        font-size: 10px;
     }
 }
