@@ -1,6 +1,7 @@
 const pool = require('../config/db');
 
 async function getItemsByCartId(cartId) {
+    console.log("Entered getItemsByCartId with cart ID:", cartId);
     const sqlQuery = `
             SELECT 
                 cart_items.item_id as cartItemId, 
@@ -11,7 +12,7 @@ async function getItemsByCartId(cartId) {
             FROM 
                 cart_items 
             INNER JOIN 
-                products ON cart_items.product_id = products.id 
+                products ON cart_items.product_id = products.product_id
             WHERE 
                 cart_items.cart_id = $1
         `;

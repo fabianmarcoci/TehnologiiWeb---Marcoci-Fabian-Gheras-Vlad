@@ -13,7 +13,7 @@ const server = http.createServer((req, res) => {
     if (pathname === '/') {
         pathname = '/index.html';
     }
-    console.log(pathname);
+    //console.log(pathname);
     if (req.method === 'GET') {
         if (pathname.endsWith('/register.html')) {
             htmlController.handleRegisterGetRequest(req, res);
@@ -34,13 +34,13 @@ const server = http.createServer((req, res) => {
         } else if (pathname.startsWith('/api/cart')) {
             const parsedUrl = new URL(req.url, `http://${req.headers.host}`);
             const email = parsedUrl.searchParams.get('email');
-
+            console.log("Received request for /api/cart with email:", email);
             cartController.handleShoppingCartRequest(req, res, email);
         } else if (pathname.endsWith('.css')) {
             let relativePath = pathname.slice('/TehnologiiWeb---Marcoci-Fabian-Gheras-Vlad/WeGa(WebGardening)/'.length);
             let fullPath = path.join(root, relativePath);
-            console.log('Relative path:', relativePath);
-            console.log('Full path:', fullPath);
+            //console.log('Relative path:', relativePath);
+            //console.log('Full path:', fullPath);
             fs.readFile(fullPath, (err, data) => {
                 if (err) {
                     console.log('Error reading CSS file:', err);
@@ -54,8 +54,8 @@ const server = http.createServer((req, res) => {
         } else if (pathname.endsWith('.png') || pathname.endsWith('.jpg') || pathname.endsWith('.jpeg')) {
                 let relativePath = pathname.slice('/TehnologiiWeb---Marcoci-Fabian-Gheras-Vlad/WeGa(WebGardening)/'.length);
                 let fullPath = path.join(root, relativePath);
-                console.log('Relative path:', relativePath);
-                console.log('Full path:', fullPath);
+                //console.log('Relative path:', relativePath);
+                //console.log('Full path:', fullPath);
                 fs.readFile(fullPath, (err, data) => {
                     if (err) {
                         console.log('Error reading image file:', err);

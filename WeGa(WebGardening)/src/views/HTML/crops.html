@@ -143,6 +143,25 @@
                     window.location.href = 'userview.html';
                 });
             }
+
+            fetch('../../components/JSON/products.json')
+                .then(response => response.json())
+                .then(products => {
+                    const cardsContainer = document.querySelector('.cards-container');
+                    for (const product of products) {
+                        const card = document.createElement('div');
+                        card.className = 'card2';
+                        card.innerHTML = `
+                        <div class="image">
+                            <img src="${product.image}">
+                        </div>
+                        <span class="title">${product.name}</span>
+                        <span class="price">${product.price} ron</span>
+                        <div class="add-to-cart" onclick="addToCart(this.parentElement)">Add to Cart</div>
+                    `;
+                        cardsContainer.appendChild(card);
+                    }
+                });
         }
 
         function logout() {
