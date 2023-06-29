@@ -37,7 +37,7 @@
     <h1 class="search-title">Discover the plant crops that interest you</h1>
 
     <div class="c-input">
-        <input type="text" placeholder="Search" name="search" class="input">
+        <input type="text" placeholder="Search" name="search" id = "search" class="input">
         <svg fill="#000000" width="20px" height="20px" viewBox="0 0 1920 1920" xmlns="http://www.w3.org/2000/svg">
             <path d="M790.588 1468.235c-373.722 0-677.647-303.924-677.647-677.647 0-373.722 303.925-677.647 677.647-677.647 373.723 0 677.647 303.925 677.647 677.647 0 373.723-303.924 677.647-677.647 677.647Zm596.781-160.715c120.396-138.692 193.807-319.285 193.807-516.932C1581.176 354.748 1226.428 0 790.588 0S0 354.748 0 790.588s354.748 790.588 790.588 790.588c197.647 0 378.24-73.411 516.932-193.807l516.028 516.142 79.963-79.963-516.142-516.028Z" fill-rule="evenodd"></path>
         </svg>
@@ -75,23 +75,23 @@
 
     </div>
 
-    <script>
-        window.onload = function() {
-            var loggedIn = document.cookie.includes('loggedIn=true');
+<script>
+    window.onload = function() {
+        var loggedIn = document.cookie.includes('loggedIn=true');
 
-            if (loggedIn) {
-                document.getElementById('login-button').style.display = 'none';
-                document.getElementById('register-button').style.display = 'none';
-                document.getElementById('logout-button').style.display = 'block';
+        if (loggedIn) {
+            document.getElementById('login-button').style.display = 'none';
+            document.getElementById('register-button').style.display = 'none';
+            document.getElementById('logout-button').style.display = 'block';
 
-                var logoLink = document.getElementById('WeGa');
-                logoLink.addEventListener('click', function(event) {
-                    event.preventDefault();
-                    window.location.href = 'userview.html';
-                });
-            }
+            var logoLink = document.getElementById('WeGa');
+            logoLink.addEventListener('click', function(event) {
+                event.preventDefault();
+                window.location.href = 'userview.html';
+            });
+        }
 
-            fetch('../../components/JSON/products.json')
+        fetch('../../components/JSON/products.json')
                 .then(response => response.json())
                 .then(products => {
                     const cardsContainer = document.querySelector('.cards-container');
@@ -99,72 +99,93 @@
                         const card = document.createElement('div');
                         card.className = 'card2';
                         card.innerHTML = `
-                        <div class="image">
-                            <img src="${product.image}">
-                        </div>
-                        <span class="title">${product.name}</span>
-                        <span class="price">${product.price} ron</span>
-                        <div class="add-to-cart" onclick="addToCart(this.parentElement)">Add to Cart</div>
-                    `;
+                    <div class="image">
+                        <img src="${product.image}">
+                    </div>
+                    <span class="title">${product.name}</span>
+                    <span class="price">${product.price} ron</span>
+                    <div class="add-to-cart" onclick="addToCart(this.parentElement)">Add to Cart</div>
+                `;
                         cardsContainer.appendChild(card);
                     }
                 });
-        }
 
-        function logout() {
-            document.cookie = "email=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-            document.cookie = "password=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-            document.cookie = "loggedIn=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-            window.location.href = '/TehnologiiWeb---Marcoci-Fabian-Gheras-Vlad/WeGa(WebGardening)/src/views/HTML/index.html';
-        }
+        const searchInput = document.querySelector('#search');
+        searchInput.addEventListener('input', function() {
+            // Get the current value of the input field
+            const searchTerm = searchInput.value.toLowerCase();
 
-        function addToCart(card) {
-            var loggedIn = document.cookie.includes('loggedIn=true');
-            if (!loggedIn) {
-                alert("Please log in to add items to the cart.");
-                return;
-            }
+            // Filter the cards based on the search term
+            const cards = document.querySelectorAll('.card2');
+            for (const card of cards) {
+                // Get the title of the product from the card
+                const title = card.querySelector('.title').textContent.toLowerCase();
 
-            var addToCartButton = card.querySelector('.add-to-cart');
-            addToCartButton.classList.add("disabled");
-            addToCartButton.textContent = "Added !";
-
-            var itemTitle = card.querySelector('.title').innerText;
-            var itemPrice = card.querySelector('.price').innerText;
-            var itemImg = card.querySelector('.image img').src;
-
-            var item = {
-                title: itemTitle,
-                price: itemPrice,
-                img: itemImg,
-                count: 1
-            };
-
-            var email = document.cookie.split('; ').find(row => row.startsWith('email=')).split('=')[1];
-
-            fetch('/api/cart', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    email: email,
-                    item: item
-                })
-            }).then(response => {
-                if (response.ok) {
-                    setTimeout(function() {
-                        addToCartButton.classList.remove("disabled");
-                        addToCartButton.textContent = "Add to Cart";
-                    }, 2000);
+                // If the title starts with the search term, show the card, otherwise hide it
+                if (title.startsWith(searchTerm)) {
+                    card.style.display = 'block';
                 } else {
-                    throw new Error('Error adding item to cart');
+                    card.style.display = 'none';
                 }
-            }).catch(error => {
-                console.error('An error occurred:', error);
-            });
+            }
+        });
+    }
+
+    function logout() {
+        document.cookie = "email=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        document.cookie = "password=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        document.cookie = "loggedIn=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        window.location.href = '/TehnologiiWeb---Marcoci-Fabian-Gheras-Vlad/WeGa(WebGardening)/src/views/HTML/index.html';
+    }
+
+    function addToCart(card) {
+        var loggedIn = document.cookie.includes('loggedIn=true');
+        if (!loggedIn) {
+            alert("Please log in to add items to the cart.");
+            return;
         }
-    </script>
+
+        var addToCartButton = card.querySelector('.add-to-cart');
+        addToCartButton.classList.add("disabled");
+        addToCartButton.textContent = "Added !";
+
+        var itemTitle = card.querySelector('.title').innerText;
+        var itemPrice = card.querySelector('.price').innerText;
+        var itemImg = card.querySelector('.image img').src;
+
+        var item = {
+            title: itemTitle,
+            price: itemPrice,
+            img: itemImg,
+            count: 1
+        };
+
+        var email = document.cookie.split('; ').find(row => row.startsWith('email=')).split('=')[1];
+
+        fetch('/api/cart', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: email,
+                item: item
+            })
+        }).then(response => {
+            if (response.ok) {
+                setTimeout(function() {
+                    addToCartButton.classList.remove("disabled");
+                    addToCartButton.textContent = "Add to Cart";
+                }, 2000);
+            } else {
+                throw new Error('Error adding item to cart');
+            }
+        }).catch(error => {
+            console.error('An error occurred:', error);
+        });
+    }
+</script>
+
 </body>
 </html>
 
