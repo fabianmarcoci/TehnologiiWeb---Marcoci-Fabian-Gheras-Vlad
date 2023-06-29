@@ -44,6 +44,13 @@
     </div>
 </div>
 
+<label for="sorting"> Sorting filters: </label>
+<select name="sorting" id ="sorting" required>
+    <option value="">--Please choose an option--</option>
+    <option value="price_asc">Order by price ascending</option>
+    <option value="price_desc">Order by price descending</option>
+    <option value="alphabetical">Order alphabetically</option>
+</select>
 
     <div class="cards-container">
         <div class="card2">
@@ -129,6 +136,42 @@
                 }
             }
         });
+
+        // Sorting functionality
+        document.getElementById('sorting').addEventListener('change', function() {
+            var sortingMethod = this.value;
+            var cards = Array.from(document.querySelectorAll('.card2'));
+            var sortedCards;
+
+            switch(sortingMethod) {
+                case 'price_asc':
+                    sortedCards = cards.sort((a, b) => {
+                        var priceA = Number(a.querySelector('.price').innerText.split(' ')[0]);
+                        var priceB = Number(b.querySelector('.price').innerText.split(' ')[0]);
+                        return priceA - priceB;
+                    });
+                    break;
+                case 'price_desc':
+                    sortedCards = cards.sort((a, b) => {
+                        var priceA = Number(a.querySelector('.price').innerText.split(' ')[0]);
+                        var priceB = Number(b.querySelector('.price').innerText.split(' ')[0]);
+                        return priceB - priceA;
+                    });
+                    break;
+                case 'alphabetical':
+                    sortedCards = cards.sort((a, b) => {
+                        var titleA = a.querySelector('.title').innerText.toLowerCase();
+                        var titleB = b.querySelector('.title').innerText.toLowerCase();
+                        return titleA < titleB ? -1 : (titleA > titleB ? 1 : 0);
+                    });
+                    break;
+            }
+
+            const cardsContainer = document.querySelector('.cards-container');
+            cardsContainer.innerHTML = '';
+            sortedCards.forEach(card => cardsContainer.appendChild(card));
+        });
+
     }
 
     function logout() {
@@ -185,6 +228,7 @@
         });
     }
 </script>
+
 
 </body>
 </html>

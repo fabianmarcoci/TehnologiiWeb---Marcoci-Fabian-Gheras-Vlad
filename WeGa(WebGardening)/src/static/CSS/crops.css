@@ -399,6 +399,29 @@ h2 {
 }
 
 
+select {
+    background-color: #B5838D;
+    width: 200px;
+    height: 40px;
+    border-radius: 30px;
+    border: none;
+    text-align: center;
+    -webkit-text-fill-color: white;
+    margin-left: 10px;
+}
+
+option {
+    background-color: #B5838D;
+    -webkit-text-fill-color: white;
+}
+
+label{
+    -webkit-text-fill-color: #B5838D;
+    font-size: 25px;
+    margin-left: 100px;
+}
+
+
 @media screen and (max-width: 1200px) {
     /* Styles for screens up to 1200px wide */
     .header-buttons {
