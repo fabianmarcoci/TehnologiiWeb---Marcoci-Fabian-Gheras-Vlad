@@ -81,6 +81,7 @@
                         cartInfo.style.display = 'none';
                         cartItems.innerHTML = '';
                         var totalOrderValue = 0;
+                        var placeOrderButton = '';
                         cart.forEach(function (item, index) {
                             var itemElement = document.createElement('div');
                             itemElement.classList.add('clearfix');
@@ -154,6 +155,20 @@
                             var orderTotalElement = document.createElement('div');
                             orderTotalElement.innerText = 'Your order total is: ' + totalOrderValue + ' RON';
 
+                            placeOrderButton = document.createElement('button');
+                            placeOrderButton.innerText = 'Place Order';
+                            placeOrderButton.addEventListener('click', function () {
+                                fetch(`/api/order`, {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify({email: email})
+                                })
+                                    .then(() => location.reload())
+                                    .catch(error => console.error('An error occurred:', error));
+                            });
+
                             itemElement.appendChild(itemImg);
                             itemElement.appendChild(plusButton);
                             itemElement.appendChild(minusButton);
@@ -161,6 +176,7 @@
                             cartItems.appendChild(itemElement);
                             cartItems.appendChild(orderTotalElement);
                         });
+                        cartItems.appendChild(placeOrderButton);
                     }
                 })
                 .catch(error => console.error('An error occurred:', error));

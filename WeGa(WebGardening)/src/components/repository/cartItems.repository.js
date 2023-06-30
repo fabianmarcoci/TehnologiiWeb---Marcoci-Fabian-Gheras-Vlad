@@ -27,6 +27,19 @@ class CartItemsRepository {
         }
     }
 
+    async findCartItemsByCartId(cartId) {
+        const query = 'SELECT * FROM cart_items WHERE cart_id = $1';
+        const values = [cartId];
+
+        try {
+            const { rows } = await db.query(query, values);
+            return rows;
+        } catch (err) {
+            console.log(err);
+            throw err;
+        }
+    }
+
     async updateCartItemQuantity(cartItemId, quantity) {
         const query = `UPDATE cart_items SET quantity = $1 WHERE item_id = $2 RETURNING *`;
         const values = [quantity, cartItemId];
@@ -49,6 +62,26 @@ class CartItemsRepository {
             const { rows } = await db.query(query, values);
             console.log("Deleted cart item: ", rows[0]);
             return rows[0];
+        } catch (err) {
+            console.log(err);
+            throw err;
+        }
+    }
+
+    async clearUserCart(cartId) {
+        const query = `DELETE FROM cart_items WHERE cart_id = $1 RETURNING *`;
+        const values = [cartId];
+        try {
+            const { rows } = await db.query(query, values);
+
+            if(rows.length > 0) {
+                console.log("Deleted cart items: ", rows);
+                return rows[0];
+            } else {
+                console.log("No cart items to delete.");
+                return null;
+            }
+
         } catch (err) {
             console.log(err);
             throw err;
