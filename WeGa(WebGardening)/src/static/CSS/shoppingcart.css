@@ -136,6 +136,116 @@ h1 {
     display: table;
 }
 
+
+
+.minus-button-style {
+    background-color: #B5838D;
+    color: white;
+    position: absolute;
+    margin-left: 10px;
+    padding: 6px 6px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.5s ease;
+    font-size: 16px;
+}
+
+
+.minus-button-style:hover{
+    background-color: #B5838D;
+    color: hsl(0, 0%, 100%);
+    box-shadow: #B5838D 0px 7px 29px 0px;
+    border: 3px solid white;
+    text-decoration: none;
+}
+
+
+
+.plus-button-style {
+    background-color: #B5838D;
+    color: white;
+    padding: 6px 6px;
+    margin-left: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.5s ease;
+    font-size: 16px;
+}
+
+
+.plus-button-style:hover{
+    background-color: #B5838D;
+    color: hsl(0, 0%, 100%);
+    box-shadow: #B5838D 0px 7px 29px 0px;
+    border: 3px solid white;
+    text-decoration: none;
+}
+
+
+
+
+.remove-button-style{
+
+    background-color: #B5838D;
+    color: white;
+    position: absolute;
+    margin-left: 40px;
+    padding:6px 6px;
+    border-radius: 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.5s ease;
+    font-size: 16px;
+}
+
+.remove-button-style:hover{
+    background-color: #B5838D;
+    color: hsl(0, 0%, 100%);
+    box-shadow: #B5838D 0px 7px 29px 0px;
+    border: 3px solid white;
+    text-decoration: none;
+}
+
+.order-button-style{
+    background-color: #B5838D;
+    color: white;
+    position: absolute;
+    margin-top: 20px;
+    margin-left: 240px;
+    padding:6px 6px;
+    border-radius: 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.5s ease;
+    font-size: 16px;
+}
+.order-button-style:hover{
+    background-color: #B5838D;
+    color: hsl(0, 0%, 100%);
+    box-shadow: #B5838D 0px 7px 29px 0px;
+    border: 3px solid white;
+    text-decoration: none;}
+
+        .order-total-text{
+        position:absolute;
+        margin-left:30px;
+        margin-top: 30px;
+        color:#B5838D ;
+    }
+
+.item-text {
+    color:#B5838D ; /* Set the text color to blue */
+}
+
+
+
+
+
+
 @media (max-width: 1200px) {
     .header-buttons {
         justify-content: center; /* Center the buttons */
@@ -284,4 +394,10 @@ h1 {
         /* Adjust font size for smaller screens */
         font-size: 14px;
 
-    }}
+    }
+
+
+
+}
+
+
