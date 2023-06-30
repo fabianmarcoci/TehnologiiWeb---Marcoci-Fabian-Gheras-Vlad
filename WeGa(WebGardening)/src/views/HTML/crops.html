@@ -114,9 +114,8 @@
                     <div class="add-to-cart" onclick="addToCart(this.parentElement)">Add to Cart</div>
                 `;
                         card.onclick = function(event) {
-                            if (!event.target.classList.contains('add-to-cart')) {
-                                goToProductDetails(product.id);
-                            }
+                            if (!event.target.classList.contains('add-to-cart')){
+                            goToProductDetails(product.id, product.price, product.name, product.description, product.image);}
                         }
                         cardsContainer.appendChild(card);
                     }
