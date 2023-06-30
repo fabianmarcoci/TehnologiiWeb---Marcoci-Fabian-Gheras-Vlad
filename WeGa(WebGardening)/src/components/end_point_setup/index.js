@@ -85,9 +85,9 @@ const server = http.createServer((req, res) => {
                     }
                 });
         } else {
-            fs.readFile(path.join(__dirname, '../../views/HTML', pathname), (err, data) => {
+            fs.readFile(path.join(__dirname, '/TehnologiiWeb---Marcoci-Fabian-Gheras-Vlad/WeGa(WebGardening)/views/HTML', pathname), (err, data) => {
                 if (err) {
-                    fs.readFile(path.join(__dirname, '../views/HTML/error404.html'), (err, data) => {
+                    fs.readFile(path.join(__dirname, '/TehnologiiWeb---Marcoci-Fabian-Gheras-Vlad/WeGa(WebGardening)/views/HTML'), (err, data) => {
                         if (err) {
                             res.writeHead(500);
                             res.end('500 Internal Server Error');
