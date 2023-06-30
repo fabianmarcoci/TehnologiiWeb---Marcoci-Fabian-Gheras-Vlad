@@ -28,11 +28,12 @@ class CartItemsRepository {
     }
 
     async updateCartItemQuantity(cartItemId, quantity) {
-        const query = `UPDATE cart_items SET quantity = $1 WHERE id = $2 RETURNING *`;
+        const query = `UPDATE cart_items SET quantity = $1 WHERE item_id = $2 RETURNING *`;
         const values = [quantity, cartItemId];
 
         try {
             const { rows } = await db.query(query, values);
+            console.log("Updated cart item: ", rows[0]);
             return rows[0];
         } catch (err) {
             console.log(err);
@@ -41,11 +42,12 @@ class CartItemsRepository {
     }
 
     async deleteCartItem(cartItemId) {
-        const query = `DELETE FROM cart_items WHERE id = $1 RETURNING *`;
+        const query = `DELETE FROM cart_items WHERE item_id = $1 RETURNING *`;
         const values = [cartItemId];
 
         try {
             const { rows } = await db.query(query, values);
+            console.log("Deleted cart item: ", rows[0]);
             return rows[0];
         } catch (err) {
             console.log(err);

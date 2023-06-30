@@ -112,6 +112,18 @@ const server = http.createServer((req, res) => {
         } else {
             res.end('Invalid request URL.');
         }
+    } else if (req.method === 'PATCH') {
+        if (pathname.startsWith('/api/cart')) {
+            cartItemsController.handleUpdateCartItemsRequest(req, res);
+        } else {
+            res.end('Invalid request URL.');
+        }
+    } else if (req.method === 'DELETE') {
+        if (pathname.startsWith('/api/cart')) {
+            cartItemsController.handleDeleteCartItemsRequest(req, res);
+        } else {
+            res.end('Invalid request URL.');
+        }
     } else {
         res.end('Invalid request method.');
     }

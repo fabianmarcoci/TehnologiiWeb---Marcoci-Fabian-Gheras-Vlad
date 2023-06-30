@@ -68,9 +68,7 @@
         }
 
         function loadCart() {
-            console.log('Getting the email');
             var email = document.cookie.split('; ').find(row => row.startsWith('email=')).split('=')[1];
-            console.log('Preparing to call /api/cart with email:', email);
             fetch(`/api/cart?email=${email}`)
                 .then(response => response.json())
                 .then(cart => {
@@ -82,37 +80,61 @@
                     } else {
                         cartInfo.style.display = 'none';
                         cartItems.innerHTML = '';
-
+                        var totalOrderValue = 0;
                         cart.forEach(function (item, index) {
                             var itemElement = document.createElement('div');
                             itemElement.classList.add('clearfix');
-                            itemElement.innerText = item.title + ': ' + item.price + ' (' + item.count + 'x)';
+                            itemElement.innerText = item.product_name + ': ' + item.product_price + ' (' + item.quantity + 'x)';
+
+                            totalOrderValue += item.quantity * parseFloat(item.product_price);
 
                             var itemImg = document.createElement('img');
-                            itemImg.src = item.img;
+                            itemImg.src = item.product_image;
                             itemImg.style.width = '52px';
                             itemImg.style.height = '52px';
                             itemImg.style.float = 'left';
                             itemImg.style.marginRight = '10px';
-
                             var plusButton = document.createElement('button');
                             plusButton.innerText = '+';
                             plusButton.addEventListener('click', function () {
-                                item.count++;
-                                location.reload();
+                                fetch(`/api/cart/${item.item_id}`, {
+                                    method: 'PATCH',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify({
+                                        cartItemId: item.item_id,
+                                        quantity: item.quantity + 1
+                                    })
+                                })
+                                    .then(() => location.reload())
+                                    .catch(error => console.error('An error occurred:', error));
                             });
 
                             var minusButton = document.createElement('button');
                             minusButton.innerText = '-';
                             minusButton.addEventListener('click', function () {
-                                if (item.count > 1) {
-                                    item.count--;
-                                    location.reload();
+                                if (item.quantity > 1) {
+                                    fetch(`/api/cart/${item.item_id}`, {
+                                        method: 'PATCH',
+                                        headers: {
+                                            'Content-Type': 'application/json'
+                                        },
+                                        body: JSON.stringify({
+                                            cartItemId: item.item_id,
+                                            quantity: item.quantity - 1
+                                        })
+                                    })
+                                        .then(() => location.reload())
+                                        .catch(error => console.error('An error occurred:', error));
                                 } else {
                                     var confirmDelete = confirm('You want to remove this item?');
                                     if (confirmDelete) {
-                                        cart.splice(index, 1);
-                                        location.reload();
+                                        fetch(`/api/cart/${item.item_id}`, {
+                                            method: 'DELETE',
+                                        })
+                                            .then(() => location.reload())
+                                            .catch(error => console.error('An error occurred:', error));
                                     }
                                 }
                             });
@@ -122,16 +144,22 @@
                             removeButton.addEventListener('click', function () {
                                 var confirmDelete = confirm('You want to remove this item?');
                                 if (confirmDelete) {
-                                    cart.splice(index, 1);
-                                    location.reload();
+                                    fetch(`/api/cart/${item.item_id}`, {
+                                        method: 'DELETE',
+                                    })
+                                        .then(() => location.reload())
+                                        .catch(error => console.error('An error occurred:', error));
                                 }
                             });
+                            var orderTotalElement = document.createElement('div');
+                            orderTotalElement.innerText = 'Your order total is: ' + totalOrderValue + ' RON';
 
                             itemElement.appendChild(itemImg);
                             itemElement.appendChild(plusButton);
                             itemElement.appendChild(minusButton);
                             itemElement.appendChild(removeButton);
                             cartItems.appendChild(itemElement);
+                            cartItems.appendChild(orderTotalElement);
                         });
                     }
                 })

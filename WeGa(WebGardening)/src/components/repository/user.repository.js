@@ -5,7 +5,7 @@ const saltRounds = 10;
 async function createUser(user) {
     const {email, name, age, gender, password} = user;
     const hashedPassword = await bcrypt.hash(password, saltRounds);
-    console.log('data gets: ' + user.email);
+    //console.log('data gets: ' + user.email);
     try {
         const result = await pool.query(
             'INSERT INTO public.users (email, full_name, age, gender, password) VALUES ($1, $2, $3, $4, $5) RETURNING id',
@@ -28,7 +28,7 @@ async function createUser(user) {
 
 async function findUserByEmail(email) {
     try {
-        console.log("Entered findUserByEmail with email:", email);
+        //console.log("Entered findUserByEmail with email:", email);
         const res = await pool.query(
             'SELECT * FROM public.users WHERE email = $1',
             [email]

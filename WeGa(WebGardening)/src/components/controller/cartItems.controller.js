@@ -12,12 +12,12 @@ async function insertCartItemsPostRequest(req, res) {
     req.on('end', async () => {
         /** @type {{email: string, item: {title: string, price: number, img: string, count: number}}} */
         const { email, item } = JSON.parse(data);
-        console.log('Received data:', { email, item });
+        //console.log('Received data:', { email, item });
 
         try {
             // Find user by email
             const user = await UserRepository.findUserByEmail(email);
-            console.log('Found user:', user);
+            //console.log('Found user:', user);
 
             // If user not found, respond with an error
             if (!user) {
@@ -37,7 +37,7 @@ async function insertCartItemsPostRequest(req, res) {
 
             // Find product by name
             const product = await ProductRepository.findProductByName(item.title);
-            console.log('Found product:', product);
+            //console.log('Found product:', product);
 
             // If product not found, respond with an error
             if (!product) {
@@ -57,7 +57,7 @@ async function insertCartItemsPostRequest(req, res) {
                 cartItem = await CartItemsRepository.insertCartItem(cart.cart_id, product.product_id, item.count);
             }
 
-            console.log('Final cart item:', cartItem);
+            //console.log('Final cart item:', cartItem);
 
             res.writeHead(201, { 'Content-Type': 'application/json' });
             res.end(JSON.stringify(cartItem));
@@ -69,28 +69,55 @@ async function insertCartItemsPostRequest(req, res) {
     });
 }
 
+async function handleUpdateCartItemsRequest(req, res) {
+    let body = '';
 
-async function deleteCartItem(req, res) {
-    let data = '';
     req.on('data', chunk => {
-        data += chunk;
+        body += chunk.toString();
     });
 
     req.on('end', async () => {
-        const { cartItemId } = JSON.parse(data);
+        const { cartItemId, quantity } = JSON.parse(body);
+
+        if (typeof quantity !== 'number' || quantity <= 0) {
+            res.writeHead(400);
+            res.end('Invalid quantity');
+            return;
+        }
 
         try {
-            const deletedItem = await CartItemsRepository.deleteCartItem(cartItemId);
-
-            res.writeHead(200, { 'Content-Type': 'application/json' });
-            res.end(JSON.stringify(deletedItem));
+            await CartItemsRepository.updateCartItemQuantity(cartItemId, quantity);
+            res.writeHead(204);
+            res.end();
         } catch (error) {
-            console.error(error);
-            res.writeHead(500, { 'Content-Type': 'application/json' });
-            res.end(JSON.stringify({ message: 'An error occurred' }));
+            console.error('An error occurred:', error);
+            res.writeHead(500);
+            res.end('Server error');
         }
     });
 }
 
+async function handleDeleteCartItemsRequest(req, res) {
+    const url = new URL(req.url, `http://${req.headers.host}`);
+    const cartItemId = Number(url.pathname.split('/').pop());
 
-module.exports = { insertCartItemsPostRequest, deleteCartItem };
+    if (isNaN(cartItemId)) {
+        res.writeHead(400);
+        res.end('Invalid cart item ID');
+        return;
+    }
+
+    try {
+        await CartItemsRepository.deleteCartItem(cartItemId);
+        res.writeHead(204);
+        res.end();
+    } catch (error) {
+        console.error('An error occurred:', error);
+        res.writeHead(500);
+        res.end('Server error');
+    }
+}
+
+
+
+module.exports = { insertCartItemsPostRequest, handleDeleteCartItemsRequest, handleUpdateCartItemsRequest };

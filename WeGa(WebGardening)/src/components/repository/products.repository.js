@@ -42,9 +42,22 @@ async function findProductByName(name) {
     }
 }
 
+async function findProductById(id) {
+    const query = `SELECT * FROM products WHERE product_id = $1`;
+    const values = [id];
+
+    try {
+        const { rows } = await pool.query(query, values);
+        return rows[0];
+    } catch (err) {
+        console.error(err);
+        throw err;
+    }
+}
 
 module.exports = {
     insertProduct,
     getAllProducts,
-    findProductByName
+    findProductByName,
+    findProductById
 }
