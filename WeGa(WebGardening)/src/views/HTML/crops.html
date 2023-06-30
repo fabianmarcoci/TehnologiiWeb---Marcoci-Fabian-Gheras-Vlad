@@ -113,10 +113,8 @@
                     <span class="price">${product.price} ron</span>
                     <div class="add-to-cart" onclick="addToCart(this.parentElement)">Add to Cart</div>
                 `;
-                        card.onclick = function(event) {
-                            if (!event.target.classList.contains('add-to-cart')) {
-                                goToProductDetails(product.id);
-                            }
+                        card.onclick = function() {
+                            goToProductDetails(product.id, product.price, product.name, product.description, product.image);
                         }
                         cardsContainer.appendChild(card);
                     }
@@ -124,16 +122,12 @@
 
         const searchInput = document.querySelector('#search');
         searchInput.addEventListener('input', function() {
-            // Get the current value of the input field
             const searchTerm = searchInput.value.toLowerCase();
 
-            // Filter the cards based on the search term
             const cards = document.querySelectorAll('.card2');
             for (const card of cards) {
-                // Get the title of the product from the card
                 const title = card.querySelector('.title').textContent.toLowerCase();
 
-                // If the title starts with the search term, show the card, otherwise hide it
                 if (title.startsWith(searchTerm)) {
                     card.style.display = 'block';
                 } else {
@@ -142,7 +136,6 @@
             }
         });
 
-        // Sorting functionality
         document.getElementById('sorting').addEventListener('change', function() {
             var sortingMethod = this.value;
             var cards = Array.from(document.querySelectorAll('.card2'));
@@ -186,14 +179,9 @@
         window.location.href = '/TehnologiiWeb---Marcoci-Fabian-Gheras-Vlad/WeGa(WebGardening)/src/views/HTML/index.html';
     }
 
-    function goToProductDetails(productId) {
-        const urlParams = new URLSearchParams(window.location.search);
-        const productPrice = urlParams.get('productPrice');
-        const plantName = urlParams.get('plantName');
-        const familyName = urlParams.get('familyName');
-        const productImage = urlParams.get('productImage');
-        console.log(plantName);
+    function goToProductDetails(productId, productPrice, plantName, familyName, productImage) {
         const url = `/TehnologiiWeb---Marcoci-Fabian-Gheras-Vlad/WeGa(WebGardening)/src/views/HTML/crop.html?productId=${productId}&productPrice=${productPrice}&plantName=${plantName}&familyName=${familyName}&productImage=${productImage}`;
+        console.log(plantName);
         window.location.href = url;
     }
 
@@ -245,8 +233,6 @@
         });
     }
 </script>
-
-
 </body>
 </html>
 

@@ -32,9 +32,11 @@
         const urlParams = new URLSearchParams(window.location.search);
         const productPrice = urlParams.get('productPrice');
         const plantName = urlParams.get('plantName');
-        const familyName = urlParams.get('familyName');
+        let familyName = urlParams.get('familyName');
+        if (familyName === 'null') {
+            familyName = 'This plant has no family name.';
+        }
         const productImage = urlParams.get('productImage');
-
 
         document.getElementById('product-price').innerText = `Price: ${productPrice} Ron`;
         document.getElementById('plant-name').innerText = `Plant name: ${plantName}`;
