@@ -9,7 +9,7 @@ const agent = new https.Agent({
 
 async function getPlants() {
     const pageSize = 20;
-    const pages = 25;
+    const pages = 5;
     const plants = [];
 
     for (let i = 1; i <= pages; i++) {
@@ -21,11 +21,13 @@ async function getPlants() {
 
         const data = await response.json();
 
-        const newPlants = data.data.map(plant => new Products(
-            plant.common_name,
-            plant.image_url,
-            plant.family_common_name
-        ));
+        const newPlants = data.data
+            .filter(plant => plant.common_name)
+            .map(plant => new Products(
+                plant.common_name,
+                plant.image_url,
+                plant.family_common_name
+            ));
 
         plants.push(...newPlants);
     }
