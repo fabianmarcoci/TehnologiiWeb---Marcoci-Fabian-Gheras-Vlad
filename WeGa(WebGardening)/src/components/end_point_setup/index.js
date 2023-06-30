@@ -109,6 +109,8 @@ const server = http.createServer((req, res) => {
             userController.handleLoginPostRequest(req, res);
         } else if (pathname.startsWith('/api/cart')) {
             cartItemsController.insertCartItemsPostRequest(req, res);
+        } else if (pathname.startsWith('/api/order')) {
+            cartItemsController.handlePlaceOrderRequest(req, res);
         } else {
             res.end('Invalid request URL.');
         }
