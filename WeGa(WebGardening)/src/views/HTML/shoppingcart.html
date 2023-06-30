@@ -24,7 +24,7 @@
             <a href="login.html" class="button" id="login-button">Login</a>
             <a href="register.html" class="button" id="register-button">Register</a>
             <a href="#" class="button" id="logout-button" style="display: none;" onclick="logout()">Logout</a>
-            <a href="products.html" class="button" id="Products-button">Products</a>
+            <a href="crops.html" class="button" id="Crops-button">Crops</a>
 
         </div>
     </div>
@@ -86,18 +86,22 @@
                             var itemElement = document.createElement('div');
                             itemElement.classList.add('clearfix');
                             itemElement.innerText = item.product_name + ': ' + item.product_price + ' (' + item.quantity + 'x)';
-
+                            itemElement.classList.add('item-text'); // Add the class to the element
                             totalOrderValue += item.quantity * parseFloat(item.product_price);
 
                             var itemImg = document.createElement('img');
                             itemImg.src = item.product_image;
                             itemImg.style.width = '52px';
                             itemImg.style.height = '52px';
+                            itemImg.style.marginBottom ='10px';
                             itemImg.style.float = 'left';
                             itemImg.style.marginRight = '10px';
+                            itemImg.style.marginLeft = '50px';
+                            itemImg.style.border = '1px solid #B5838D'; // Set the border style and color
 
                             var plusButton = document.createElement('button');
                             plusButton.innerText = '+';
+                            plusButton.classList.add('plus-button-style');  // add this line
                             plusButton.addEventListener('click', function () {
                                 fetch(`/api/cart/${item.item_id}`, {
                                     method: 'PATCH',
@@ -115,6 +119,7 @@
 
                             var minusButton = document.createElement('button');
                             minusButton.innerText = '-';
+                            minusButton.classList.add('minus-button-style');  // add this line
                             minusButton.addEventListener('click', function () {
                                 if (item.quantity > 1) {
                                     fetch(`/api/cart/${item.item_id}`, {
@@ -143,6 +148,7 @@
 
                             var removeButton = document.createElement('button');
                             removeButton.innerText = 'Remove';
+                            removeButton.classList.add('remove-button-style');  // add this line
                             removeButton.addEventListener('click', function () {
                                 var confirmDelete = confirm('You want to remove this item?');
                                 if (confirmDelete) {
@@ -162,9 +168,11 @@
                         });
                         var orderTotalElement = document.createElement('div');
                         orderTotalElement.innerText = 'Your order total is: ' + totalOrderValue + ' RON';
+                        orderTotalElement.classList.add('order-total-text'); // Add a class to the element
 
                         var placeOrderButton = document.createElement('button');
                         placeOrderButton.innerText = 'Place Order';
+                        placeOrderButton.classList.add('order-button-style');  // add this line
                         placeOrderButton.addEventListener('click', function () {
                             fetch(`/api/order`, {
                                 method: 'POST',
