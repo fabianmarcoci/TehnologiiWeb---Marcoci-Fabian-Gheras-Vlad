@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Web Gardening</title>
+    <title>Web Gardening - Product Details</title>
     <link rel="icon" type="image/png" id="logo-icon" href="../../static/img/favicon.png" sizes="16x16">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA Compatible" content="IE=edge">
@@ -17,14 +17,30 @@
 <div class="container">
     <div class="card">
         <div class="plant-details">
-            <h2 class="plant-name">Plant Name</h2>
-            <p class="plant-price">Price: $X</p>
-            <p class="plant-description">Plant Description Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <p class="additional-factors"><strong>Additional Factors:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <p class="seasonal-behavior"><strong>Seasonal Behavior:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <h2 class="title" id="product-title"></h2>
+            <p class="plant-price" id="product-price"></p>
+            <p class="plant-name" id="plant-name"></p>
+            <p class="family-name" id="family-name"></p>
+            <p class="Export-buttonInfo"><strong>Exportare date:</strong> Pentru a exporta datele in format <strong>CSV/JSON</strong>, va rugam apasati butonul de mai jos.</p>
         </div>
-        <img class="plant-image" src="../../static/img/favicon.png" alt="Plant Image">
+        <img class="plant-image" id="product-image" src="../../static/img/favicon.png" alt="Plant Image">
     </div>
 </div>
+
+<script>
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const productPrice = urlParams.get('productPrice');
+        const plantName = urlParams.get('plantName');
+        const familyName = urlParams.get('familyName');
+        const productImage = urlParams.get('productImage');
+
+
+        document.getElementById('product-price').innerText = `Price: ${productPrice} Ron`;
+        document.getElementById('plant-name').innerText = `Plant name: ${plantName}`;
+        document.getElementById('family-name').innerText = `Plant family name: ${familyName}`;
+        document.getElementById('product-image').src = productImage;
+    }
+</script>
 </body>
 </html>

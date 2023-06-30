@@ -3,11 +3,11 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #FAD2C9;
+    background-color: #B5838D;
 }
 
 .card {
-    width: 600px;
+    width: 800px;
     height: 600px;
     background-color: white;
     border: 1px solid #ccc;
@@ -17,8 +17,8 @@
 }
 
 
-.plant-name {
-    font-size: 24px;
+.title {
+    font-size: 28px;
     margin-top: 0;
     color: #B5838D;
 }
@@ -29,18 +29,33 @@
     color: #B5838D;
 }
 
-.plant-description,
-.additional-factors,
-.seasonal-behavior {
+.plant-name{
+    position: absolute;
     margin-bottom: 10px;
     margin-top: 40px;
     color: #B5838D;
+    margin-left: 5px;
 }
+.family-name{
+    position: absolute;
+    margin-bottom: 10px;
+    margin-top: 90px;
+    color: #B5838D;
+    margin-left: 5px;
+}
+.Export-buttonInfo{
+    position: absolute;
+    margin-bottom: 10px;
+    margin-top: 140px;
+    color: #B5838D;
+    margin-left: 5px;
+}
+
 
 .plant-image {
     width: 150px;
     height: auto;
     margin-bottom: 30px;
-    margin-top: 135px;
+    margin-top: 300px;
 
 }
